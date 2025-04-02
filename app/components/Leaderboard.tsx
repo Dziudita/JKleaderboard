@@ -181,8 +181,7 @@ export default function Leaderboard() {
             </thead>
             <tbody>
               {users.slice(0, 10).map((user, index) => {
-              const originalName = user?.username || 'N/A';
-const name = originalName === 'NotGemini' ? 'Horse 🐴' : originalName;
+             const name = user?.username || 'N/A';
 
                 const wagerValue = user?.total || 0;
                 const wager = `$${wagerValue.toLocaleString(undefined, {
