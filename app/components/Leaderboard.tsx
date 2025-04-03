@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes in milliseconds
+const REFRESH_INTERVAL = 30 * 60 * 1000; // 30 minutes
 
 type User = {
   username?: string;
@@ -118,7 +118,7 @@ export default function Leaderboard() {
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
   const eligibleUsers = users.filter((user) => (user.total || 0) >= 20000);
   const totalEligibleWager = eligibleUsers.reduce((sum, user) => sum + (user.total || 0), 0);
-  const rewardPool = getRewardPool(totalEligibleWager);
+  const rewardPool = getRewardPool(totalWager); // <- updated here!
 
   return (
     <div
@@ -144,10 +144,9 @@ export default function Leaderboard() {
       <p style={{ color: '#9eff3e', fontSize: '1rem', marginBottom: '30px' }}>
         Ends in: {days} D {hours} H {minutes} M {seconds} S (UTC)
       </p>
-     <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '30px' }}>
-  This leaderboard is updated twice a day with fresh wager data.
-</p>
-
+      <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '30px' }}>
+        This leaderboard refreshes twice daily.
+      </p>
 
       {error && (
         <p style={{ color: 'red', marginTop: '20px' }}>
@@ -182,8 +181,7 @@ export default function Leaderboard() {
             </thead>
             <tbody>
               {users.slice(0, 10).map((user, index) => {
-             const name = user?.username || 'N/A';
-
+                const name = user?.username || 'N/A';
                 const wagerValue = user?.total || 0;
                 const wager = `$${wagerValue.toLocaleString(undefined, {
                   minimumFractionDigits: 2,
@@ -213,7 +211,7 @@ export default function Leaderboard() {
           </table>
 
           <p style={{ color: '#aaa', fontSize: '0.9rem', marginTop: '20px' }}>
-            Leaderboard will be payed out within 24 - 48 hours.
+            Leaderboard will be paid out within 24 - 48 hours.
           </p>
         </>
       )}
