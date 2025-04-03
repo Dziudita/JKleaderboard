@@ -9,9 +9,7 @@ export default function Leaderboard() {
   const [error, setError] = useState<string | null>(null);
 
   const fetchLeaderboard = () => {
-    fetch('/api/leaderboard', {
-      cache: 'no-store',
-    })
+   fetch('/api/leaderboard', { cache: 'no-store' })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch');
         return res.json();
