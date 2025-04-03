@@ -6,15 +6,22 @@ export async function GET() {
       'Cache-Control': 'no-store',
     },
     next: { revalidate: 0 },
+    cache: "no-store",
   });
+
+  if (!res.ok) {
+    return new Response(JSON.stringify({ error: "Failed to fetch data from Goated API" }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 
   const data = await res.json();
 
-  // Filtruoti pagal "this_month"
   const sorted = data.data
-    .map((u: any) => ({
-      username: u.name,
-      total: u.wagered?.this_month || 0,
+    .map((user: any) => ({
+      username: user.name,
+      total: user.wagered?.this_month || 0,
     }))
     .sort((a: any, b: any) => b.total - a.total);
 
