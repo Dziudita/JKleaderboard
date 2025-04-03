@@ -144,9 +144,10 @@ export default function Leaderboard() {
       <p style={{ color: '#9eff3e', fontSize: '1rem', marginBottom: '30px' }}>
         Ends in: {days} D {hours} H {minutes} M {seconds} S (UTC)
       </p>
-      <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '30px' }}>
-        This leaderboard refreshes automatically every 30 minutes.
-      </p>
+     <p style={{ color: '#aaa', fontSize: '0.9rem', marginBottom: '30px' }}>
+  This leaderboard is updated twice a day with fresh wager data.
+</p>
+
 
       {error && (
         <p style={{ color: 'red', marginTop: '20px' }}>
