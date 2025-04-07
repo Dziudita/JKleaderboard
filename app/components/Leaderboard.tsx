@@ -1,3 +1,4 @@
+import './Leaderboard.css';
 'use client';
 
 import { useEffect, useState } from 'react';
