@@ -198,11 +198,12 @@ export default function Leaderboard() {
                   maximumFractionDigits: 2,
                 })}`;
 
-                const medal = index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : '';
+                const placeDisplay =
+                  index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
 
                 return (
                   <tr key={index}>
-                    <td style={cellStyle}>{index + 1}. {medal}</td>
+                    <td style={cellStyle}>{placeDisplay}</td>
                     <td style={cellStyle}>{name}</td>
                     <td style={cellStyle}>{wager}</td>
                     <td style={cellStyle}>{payoutDisplay}</td>
