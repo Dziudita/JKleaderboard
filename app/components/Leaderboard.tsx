@@ -102,8 +102,8 @@ export default function Leaderboard() {
   const medalEmoji = ['🥇', '🥈', '🥉'];
 
   const maskName = (name: string = 'N/A') => {
-    if (name.length <= 2) return name + '***';
-    return name.slice(0, 2) + '***';
+    if (name.length <= 4) return name.slice(0, 2) + '***';
+    return name.slice(0, 3) + '***' + name.slice(-1);
   };
 
   return (
