@@ -93,32 +93,16 @@ export default function Leaderboard() {
     return () => clearInterval(interval);
   }, []);
 
-  const tableStyle = {
-    width: '100%',
-    maxWidth: '900px',
-    margin: '40px auto',
-    borderCollapse: 'collapse' as const,
-    fontSize: '1.2rem',
-  };
-
-  const headerCellStyle = {
-    padding: '12px',
-    borderBottom: '2px solid #f7c000',
-    color: '#f7c000',
-    textAlign: 'center' as const,
-  };
-
-  const cellStyle = {
-    padding: '12px',
-    borderBottom: '1px solid #444',
-    color: 'white',
-    textAlign: 'center' as const,
-  };
-
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
   const eligibleUsers = users.filter((user) => (user.total || 0) >= 20000);
   const totalEligibleWager = eligibleUsers.reduce((sum, user) => sum + (user.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
+
+  const podiumStyles = [
+    { transform: 'translateY(0)', backgroundColor: '#FFD700' },
+    { transform: 'translateY(20px)', backgroundColor: '#C0C0C0' },
+    { transform: 'translateY(40px)', backgroundColor: '#CD7F32' },
+  ];
 
   return (
     <div
@@ -127,17 +111,13 @@ export default function Leaderboard() {
         color: '#fff',
         padding: '40px 20px',
         fontFamily: 'Arial, sans-serif',
-        textAlign: 'center' as const,
+        textAlign: 'center',
         minHeight: '100vh',
       }}
     >
-      <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f7c000' }}>
-        Johnny Knox
-      </h1>
+      <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f7c000' }}>Johnny Knox</h1>
       <h2 style={{ fontSize: '2rem', color: '#f7c000' }}>Monthly</h2>
-      <h3 style={{ fontSize: '1.5rem', color: 'white', marginBottom: '10px' }}>
-        Goated Leaderboard
-      </h3>
+      <h3 style={{ fontSize: '1.5rem', color: 'white', marginBottom: '10px' }}>Goated Leaderboard</h3>
       <p style={{ color: '#f7c000', fontSize: '0.95rem', marginBottom: '20px' }}>
         ✅ Minimum Wager Requirement: Players must wager at least $20,000 within the month to qualify for the leaderboard rewards.
       </p>
@@ -148,70 +128,66 @@ export default function Leaderboard() {
         This leaderboard refreshes twice daily.
       </p>
 
-      {error && (
-        <p style={{ color: 'red', marginTop: '20px' }}>
-          Error loading leaderboard: {error}
-        </p>
-      )}
-
-      {users.length === 0 && !error && (
-        <p style={{ color: '#aaa' }}>Loading or no data available.</p>
-      )}
+      {error && <p style={{ color: 'red' }}>Error loading leaderboard: {error}</p>}
+      {users.length === 0 && !error && <p style={{ color: '#aaa' }}>Loading or no data available.</p>}
 
       {users.length > 0 && (
         <>
-          <p style={{ color: '#f7c000', fontSize: '1rem', marginBottom: '10px' }}>
-            Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </p>
-          <p style={{ color: '#f7c000', fontSize: '1rem', marginBottom: '10px' }}>
-            Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </p>
-          <p style={{ color: '#f7c000', fontSize: '1rem', marginBottom: '30px' }}>
-            Reward Pool: ${rewardPool.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: '20px', marginBottom: '40px' }}>
+            {users.slice(0, 3).map((user, index) => {
+              const payout =
+                user.total && user.total >= 20000 && rewardPool > 0 && totalEligibleWager > 0
+                  ? (user.total / totalEligibleWager) * rewardPool
+                  : 0;
 
-          <table style={tableStyle}>
-            <thead>
-              <tr>
-                <th style={headerCellStyle}>Place</th>
-                <th style={headerCellStyle}>User</th>
-                <th style={headerCellStyle}>Wager</th>
-                <th style={headerCellStyle}>Payout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.slice(0, 10).map((user, index) => {
-                const name = user?.username || 'N/A';
-                const wagerValue = user?.total || 0;
-                const wager = `$${wagerValue.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}`;
+              return (
+                <div
+                  key={index}
+                  style={{
+                    width: '150px',
+                    padding: '20px',
+                    borderRadius: '10px',
+                    ...podiumStyles[index],
+                  }}
+                >
+                  <div style={{ fontSize: '2rem' }}>{index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉'}</div>
+                  <div style={{ fontWeight: 'bold', marginTop: '10px' }}>{user.username}</div>
+                  <div>Wager: ${user.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                  <div>Payout: ${payout.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+                </div>
+              );
+            })}
+          </div>
 
-                const payout =
-                  wagerValue >= 20000 && rewardPool > 0 && totalEligibleWager > 0
-                    ? (wagerValue / totalEligibleWager) * rewardPool
-                    : 0;
+          <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '1rem' }}>
+              <thead>
+                <tr>
+                  <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Place</th>
+                  <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>User</th>
+                  <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Wager</th>
+                  <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Payout</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.slice(3, 10).map((user, index) => {
+                  const payout =
+                    user.total && user.total >= 20000 && rewardPool > 0 && totalEligibleWager > 0
+                      ? (user.total / totalEligibleWager) * rewardPool
+                      : 0;
 
-                const payoutDisplay = `$${payout.toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}`;
-
-                const placeDisplay =
-                  index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}.`;
-
-                return (
-                  <tr key={index}>
-                    <td style={cellStyle}>{placeDisplay}</td>
-                    <td style={cellStyle}>{name}</td>
-                    <td style={cellStyle}>{wager}</td>
-                    <td style={cellStyle}>{payoutDisplay}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+                  return (
+                    <tr key={index + 3}>
+                      <td style={{ padding: '10px', textAlign: 'center' }}>{index + 4}.</td>
+                      <td style={{ padding: '10px', textAlign: 'center' }}>{user.username}</td>
+                      <td style={{ padding: '10px', textAlign: 'center' }}>${user.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                      <td style={{ padding: '10px', textAlign: 'center' }}>${payout.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
 
           <p style={{ color: '#aaa', fontSize: '0.9rem', marginTop: '20px' }}>
             Leaderboard will be paid out within 24 - 48 hours.
