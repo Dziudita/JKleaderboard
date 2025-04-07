@@ -101,6 +101,11 @@ export default function Leaderboard() {
 
   const medalEmoji = ['🥇', '🥈', '🥉'];
 
+  const maskName = (name: string = 'N/A') => {
+    if (name.length <= 2) return name + '***';
+    return name.slice(0, 2) + '***';
+  };
+
   return (
     <div style={{ backgroundColor: '#000', color: '#fff', padding: '20px', fontFamily: 'Arial, sans-serif', minHeight: '100vh' }}>
       <h1 style={{ fontSize: '3rem', fontWeight: 'bold', color: '#f7c000', textAlign: 'center' }}>Johnny Knox</h1>
@@ -113,12 +118,12 @@ export default function Leaderboard() {
         Ends in: {days} D {hours} H {minutes} M {seconds} S (UTC)
       </p>
       <p style={{ color: '#f7c000', fontSize: '1rem', textAlign: 'center' }}>
-  Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-</p>
-<p style={{ color: '#f7c000', fontSize: '1rem', textAlign: 'center' }}>
-  Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-</p>
-<p style={{ color: '#aaa', fontSize: '0.9rem', textAlign: 'center', marginBottom: '20px' }}>
+        Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+      </p>
+      <p style={{ color: '#f7c000', fontSize: '1rem', textAlign: 'center' }}>
+        Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+      </p>
+      <p style={{ color: '#aaa', fontSize: '0.9rem', textAlign: 'center', marginBottom: '20px' }}>
         This leaderboard refreshes automatically every 10–30 minutes.
       </p>
 
@@ -139,7 +144,7 @@ export default function Leaderboard() {
               flex: '1 1 260px'
             }}>
               <div style={{ fontSize: '2rem' }}>{medalEmoji[index]}</div>
-              <h2 style={{ fontWeight: 'bold' }}>{user.username}</h2>
+              <h2 style={{ fontWeight: 'bold' }}>{maskName(user.username)}</h2>
               <p>Wager: ${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</p>
               <p>Payout: ${payout.toFixed(3)}</p>
             </div>
@@ -166,7 +171,7 @@ export default function Leaderboard() {
               return (
                 <tr key={index}>
                   <td style={{ borderBottom: '1px solid #444', textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                  <td style={{ borderBottom: '1px solid #444', textAlign: 'center', padding: '10px' }}>{user.username}</td>
+                  <td style={{ borderBottom: '1px solid #444', textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
                   <td style={{ borderBottom: '1px solid #444', textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</td>
                   <td style={{ borderBottom: '1px solid #444', textAlign: 'center', padding: '10px' }}>${payout.toFixed(3)}</td>
                 </tr>
