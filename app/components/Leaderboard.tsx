@@ -112,7 +112,13 @@ export default function Leaderboard() {
       <p style={{ color: '#9eff3e', fontSize: '1rem', textAlign: 'center' }}>
         Ends in: {days} D {hours} H {minutes} M {seconds} S (UTC)
       </p>
-      <p style={{ color: '#aaa', fontSize: '0.9rem', textAlign: 'center', marginBottom: '20px' }}>
+      <p style={{ color: '#f7c000', fontSize: '1rem', textAlign: 'center' }}>
+  Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+</p>
+<p style={{ color: '#f7c000', fontSize: '1rem', textAlign: 'center' }}>
+  Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+</p>
+<p style={{ color: '#aaa', fontSize: '0.9rem', textAlign: 'center', marginBottom: '20px' }}>
         This leaderboard refreshes automatically every 10–30 minutes.
       </p>
 
