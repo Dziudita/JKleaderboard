@@ -1,65 +1,26 @@
-.podium {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
+'use client';
 
-.podium-card {
-  width: 250px;
-  padding: 20px;
-  border-radius: 20px;
-  color: black;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-  position: relative;
-  animation: shine 2s infinite ease-in-out;
-}
-
-.podium-card.gold {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-  transform: translateY(-20px);
-}
-
-.podium-card.silver {
-  background: linear-gradient(135deg, #C0C0C0, #AAAAAA);
-  box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
-  transform: translateY(-10px);
-}
-
-.podium-card.bronze {
-  background: linear-gradient(135deg, #CD7F32, #A0522D);
-  box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
-}
-
-.medal {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
-  animation: pulse 2s infinite;
-}
-
-/* Animacijos */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 0.8;
-  }
-}
-
-@keyframes shine {
-  0% {
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255,255,255,0.5);
-  }
-  100% {
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-  }
+export default function Leaderboard() {
+  return (
+    <div
+      style={{
+        backgroundColor: '#000',
+        color: '#FFD700',
+        minHeight: '100vh',
+        padding: '100px 20px',
+        fontFamily: 'Arial, sans-serif',
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}
+    >
+      <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>
+        🚧 We’re currently taking a break! 🚧
+      </h1>
+      <p style={{ fontSize: '1.5rem', color: '#aaa' }}>
+        The leaderboard is temporarily offline while we rest and recharge. We'll be back soon!
+      </p>
+    </div>
+  );
 }
