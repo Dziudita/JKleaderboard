@@ -88,7 +88,7 @@ export default function Leaderboard() {
   const medals = ['🥇', '🥈', '🥉'];
 
   const maskName = (name: string = '') =>
-    name.length < 5 ? name.slice(0, 2) + '' : name.slice(0, 3) + '' + name.slice(-1);
+    name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
     <div style={{ backgroundColor: '#000', color: '#fff', fontFamily: 'Arial', padding: '20px' }}>
@@ -117,7 +117,7 @@ export default function Leaderboard() {
             : 0;
           const classes = ['gold', 'silver', 'bronze'];
           return (
-            <div key={index} className={podium-card ${classes[index]}}>
+            <div key={index} className={`podium-card ${classes[index]}`}>
               <div className="medal">{medals[index]}</div>
               <h2>{maskName(user.username)}</h2>
               <p>Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></p>
