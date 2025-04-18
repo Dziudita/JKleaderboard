@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import './Leaderboard.css'; // <- BŪTINAS importas animacijoms
+import './Leaderboard.css';
 
 const REFRESH_INTERVAL = 30 * 60 * 1000;
 
@@ -93,7 +93,8 @@ export default function Leaderboard() {
   return (
     <div style={{ backgroundColor: '#000', color: '#fff', fontFamily: 'Arial', padding: '20px' }}>
       <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>Johnny Knox</h1>
-      <h2 style={{ color: '#f7c000', fontSize: '2rem', textAlign: 'center' }}>Monthly</h2>
+      <h2 style={{ color: '#f7c000', fontSize: '2rem', textAlign: 'center' }}>Goated Monthly</h2>
+
       <p style={{ textAlign: 'center', color: '#f7c000' }}>
         ✅ Minimum Wager Requirement: Players must wager at least $20,000
       </p>
