@@ -91,7 +91,17 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-    <div style={{ backgroundColor: '#000', color: '#fff', fontFamily: 'Arial', padding: '20px' }}>
+    <div style={{
+  backgroundImage: 'url("/background.png")',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  color: '#fff',
+  fontFamily: 'Arial, sans-serif',
+  padding: '20px',
+  minHeight: '100vh'
+}}>
       <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>Johnny Knox</h1>
       <h2 style={{ color: '#f7c000', fontSize: '2rem', textAlign: 'center' }}>Goated Monthly</h2>
 
