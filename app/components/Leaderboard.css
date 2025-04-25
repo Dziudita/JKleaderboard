@@ -1,3 +1,11 @@
+body {
+  background-image: url('/kelias/iki/paukscio-fono.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* neprislenka */
+}
+
 /* 1️⃣ FONO ir RESETO KODAS viršuje */
 * {
   margin: 0;
