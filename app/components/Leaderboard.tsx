@@ -159,6 +159,13 @@ export default function Leaderboard() {
       <p style={{ color: '#aaa', textAlign: 'center', marginTop: '30px' }}>
         Leaderboard will be paid out within 24 - 48 hours.
       </p>
+<p style={{ color: '#ffcc00', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px' }}>
+  ⚠ Gamble Responsibly<br />
+  <span style={{ color: '#aaa' }}>
+    Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+  </span>
+</p>
+
     </div>
   );
 }
