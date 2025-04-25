@@ -16,51 +16,101 @@ html, body {
   background-position: top center; /* perkelia paukščio galvą */
   background-attachment: fixed;
 }
-
-/* 2️⃣ PUSLAPIO STILIAI */
 .podium {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  gap: 20px;
-  margin-top: 50px;
+  gap: 30px;
+  margin-top: 60px;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fonas už kortelių – švytintys ratai */
+.podium::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,215,0,0.2), transparent);
+  border-radius: 50%;
+  z-index: -1;
+  animation: glow 4s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .podium-card {
-  width: 250px;
-  padding: 20px;
+  width: 240px;
+  padding: 25px;
   border-radius: 20px;
   color: black;
   text-align: center;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   position: relative;
-  animation: shine 2s infinite ease-in-out;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 1️⃣ VIETA PER VIDURĮ */
+.podium-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+}
+
+/* KORTELIŲ EFEKTAI */
 .podium-card.gold {
-  background: linear-gradient(135deg, #FFD700, #FFA500);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-  transform: translateY(-30px); /* dar aukščiau */
-  order: 2; /* CENTRE */
+  background: linear-gradient(145deg, #FFD700, #FFA500);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+  transform: translateY(-40px);
+  order: 2;
 }
 
-/* 2️⃣ KAIRĖJE */
+.podium-card.gold::after {
+  content: '👑';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: pulse 2s infinite;
+}
+
 .podium-card.silver {
-  background: linear-gradient(135deg, #C0C0C0, #AAAAAA);
-  box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
-  transform: translateY(-10px); /* šiek tiek aukštyn */
-  order: 1; /* KAIRĖ */
+  background: linear-gradient(145deg, #C0C0C0, #AAAAAA);
+  box-shadow: 0 0 25px rgba(192, 192, 192, 0.7);
+  transform: translateY(-15px);
+  order: 1;
 }
 
-/* 3️⃣ DEŠINĖJE */
 .podium-card.bronze {
-  background: linear-gradient(135deg, #CD7F32, #A0522D);
-  box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
-  transform: translateY(-5px); /* beveik tiesiai */
-  order: 3; /* DEŠINĖ */
+  background: linear-gradient(145deg, #CD7F32, #A0522D);
+  box-shadow: 0 0 25px rgba(205, 127, 50, 0.7);
+  transform: translateY(-10px);
+  order: 3;
 }
+
+/* MEDALIAI */
+.medal {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: rotate 3s infinite linear;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 .medal {
   font-size: 2.5rem;
