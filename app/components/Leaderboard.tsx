@@ -91,21 +91,13 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-  <div style={{
-  backgroundImage: 'url("/background.png")',
-  backgroundSize: 'cover',           // Užpildo visą plotą
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center center',
-  backgroundAttachment: 'fixed',     // Kad fonas nesislinktų
-  backgroundColor: '#000',           // Juodi kraštai jei trūksta
+<div style={{
   minHeight: '100vh',
-  width: '100vw',                    // Svarbu kad nebūtų scroll!
-  margin: 0,
   padding: '20px',
   color: '#fff',
-  fontFamily: 'Arial',
-  overflowX: 'hidden'                // Paslepia šoninius scrollus
+  fontFamily: 'Arial'
 }}>
+
 
       <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>Johnny Knox</h1>
       <h2 style={{ color: '#f7c000', fontSize: '2rem', textAlign: 'center' }}>Goated Monthly</h2>
