@@ -99,9 +99,9 @@ export default function Leaderboard() {
 }}>
 
 
-      <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>Johnny Knox</h1>
-      <h2 style={{ color: '#f7c000', fontSize: '2rem', textAlign: 'center' }}>Goated Monthly</h2>
-
+      <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>
+    Johnny Knox Goated Monthly
+  </h1>
       <p style={{ textAlign: 'center', color: '#f7c000' }}>
         ✅ Minimum Wager Requirement: Players must wager at least $20,000
       </p>
