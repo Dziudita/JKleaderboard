@@ -1,12 +1,4 @@
-body {
-  background-image: url('/kelias/iki/paukscio-fono.jpg');
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* neprislenka */
-}
-
-/* 1️⃣ FONO ir RESETO KODAS viršuje */
+/* 1️⃣ FONO ir RESET KODAS viršuje */
 * {
   margin: 0;
   padding: 0;
@@ -18,10 +10,10 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   background-color: black;
-  background-image: url('/background.png');
+  background-image: url('/background.png'); /* tavo paveikslėlis */
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: top center; /* perkelia paukščio galvą */
   background-attachment: fixed;
 }
 
@@ -29,8 +21,9 @@ html, body {
 .podium {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   gap: 20px;
-  margin-bottom: 30px;
+  margin-top: 50px;
   flex-wrap: wrap;
 }
 
@@ -45,21 +38,28 @@ html, body {
   animation: shine 2s infinite ease-in-out;
 }
 
+/* 1️⃣ VIETA PER VIDURĮ */
 .podium-card.gold {
   background: linear-gradient(135deg, #FFD700, #FFA500);
   box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-  transform: translateY(-20px);
+  transform: translateY(-30px); /* dar aukščiau */
+  order: 2; /* CENTRE */
 }
 
+/* 2️⃣ KAIRĖJE */
 .podium-card.silver {
   background: linear-gradient(135deg, #C0C0C0, #AAAAAA);
   box-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
-  transform: translateY(-10px);
+  transform: translateY(-10px); /* šiek tiek aukštyn */
+  order: 1; /* KAIRĖ */
 }
 
+/* 3️⃣ DEŠINĖJE */
 .podium-card.bronze {
   background: linear-gradient(135deg, #CD7F32, #A0522D);
   box-shadow: 0 0 20px rgba(205, 127, 50, 0.5);
+  transform: translateY(-5px); /* beveik tiesiai */
+  order: 3; /* DEŠINĖ */
 }
 
 .medal {
