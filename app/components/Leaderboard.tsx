@@ -91,16 +91,20 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-   <div style={{
+  <div style={{
   backgroundImage: 'url("/background.png")',
-  backgroundSize: 'cover',
+  backgroundSize: 'cover',           // Užpildo visą plotą
   backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center',
-  backgroundAttachment: 'fixed',
+  backgroundPosition: 'center center',
+  backgroundAttachment: 'fixed',     // Kad fonas nesislinktų
+  backgroundColor: '#000',           // Juodi kraštai jei trūksta
+  minHeight: '100vh',
+  width: '100vw',                    // Svarbu kad nebūtų scroll!
+  margin: 0,
+  padding: '20px',
   color: '#fff',
   fontFamily: 'Arial',
-  padding: '20px',
-  minHeight: '100vh',
+  overflowX: 'hidden'                // Paslepia šoninius scrollus
 }}>
 
       <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>Johnny Knox</h1>
