@@ -1,3 +1,23 @@
+/* 1️⃣ FONO ir RESETO KODAS viršuje */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: black;
+  background-image: url('/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+/* 2️⃣ PUSLAPIO STILIAI */
 .podium {
   display: flex;
   justify-content: center;
@@ -53,23 +73,6 @@
 }
 
 @keyframes shine {
-  body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  background-image: url('/background.png'); /* <-- tavo paveikslėlis public folderyje */
-  background-size: cover;       /* apkarpo ir užpildo visą */
-  background-repeat: no-repeat; /* jokio pasikartojimo */
-  background-position: center center; /* centras */
-  background-attachment: fixed; /* išlieka vietoje skrolinant */
-  background-color: black; /* jeigu paveikslėlis lėtai kraunasi – juodas fonas */
-}
-
   0% {
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
   }
