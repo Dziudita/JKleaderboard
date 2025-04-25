@@ -53,6 +53,23 @@
 }
 
 @keyframes shine {
+  body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-image: url('/background.png'); /* <-- tavo paveikslėlis public folderyje */
+  background-size: cover;       /* apkarpo ir užpildo visą */
+  background-repeat: no-repeat; /* jokio pasikartojimo */
+  background-position: center center; /* centras */
+  background-attachment: fixed; /* išlieka vietoje skrolinant */
+  background-color: black; /* jeigu paveikslėlis lėtai kraunasi – juodas fonas */
+}
+
   0% {
     box-shadow: 0 0 20px rgba(255,255,255,0.2);
   }
