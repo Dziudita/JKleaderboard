@@ -1,12 +1,14 @@
+/* Kortelių konteineris */
 .podium {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 30px;
   margin-top: 60px;
-  flex-wrap: nowrap; /* Kortelės horizontaliai */
+  flex-wrap: nowrap;
   position: relative;
   z-index: 1;
+  background: none; /* Užtikrinam, kad nėra balto */
 }
 
 /* Bendras kortelių dizainas */
@@ -18,21 +20,23 @@
   text-align: center;
   position: relative;
   color: #fff;
+  background: none; /* <-- Panaikinam visus fonus */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+  border: none; /* NEBŪTINA bet jei buvo */
+  box-shadow: none; /* Jei nereikia šešėlio aplink */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Tekstas centre */
+  justify-content: center;
   align-items: center;
 }
 
 /* Kortelės su paveikslėliais */
 .podium-card.gold {
   background-image: url('/gold-card.png');
-  transform: translateY(-40px); /* paliekam */
+  transform: translateY(-40px);
   order: 2;
 }
 
@@ -49,19 +53,19 @@
 }
 
 .podium-card:hover {
-  transform: translateY(-5px) scale(1.05); /* Nekeičia smarkiai aukščio */
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: none; /* Arba palik švytėjimą jei nori */
 }
 
 /* Tekstai kortelėse */
 .podium-card .username, .wager, .payout {
   color: #fff;
   font-weight: bold;
-  text-shadow: 0 0 5px rgba(255,255,255,0.9), 0 0 10px rgba(255,215,0,0.9);
+  text-shadow: 0 0 5px rgba(0,0,0,0.7), 0 0 10px rgba(0,0,0,0.9);
   margin: 5px 0;
 }
 
-/* Panaikinam nebenaudojamus */
+/* Paslėpti nereikalingus */
 .medal, .podium-card.gold::after {
   display: none;
 }
