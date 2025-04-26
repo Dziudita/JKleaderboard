@@ -99,6 +99,12 @@ export default function Leaderboard() {
         <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
         <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
       </div>
+{/* Kauliukų fonas */}
+<div className="dice-background">
+  <div className="dice dice-left" />
+  <div className="dice dice-right" />
+</div>
+
 
       {/* TURINYS */}
       <div style={{
