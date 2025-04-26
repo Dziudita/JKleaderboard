@@ -101,7 +101,7 @@ export default function Leaderboard() {
       </div>
 {/* Kauliukų fonas */}
 <div className="dice-background">
- <div className="dice dice-right" style={{ bottom: '5%' }} />
+<div className="dice dice-right" />
   <div className="dice dice-right" />
 </div>
 
