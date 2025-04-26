@@ -166,7 +166,8 @@ export default function Leaderboard() {
     color: '#9eff3e', 
     fontWeight: 'bold', 
     textDecoration: 'underline', 
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    textShadow: 'none' // ŠITAS panaikins bet kokį šešėlį
   }}>
   join the team now
 </a>
