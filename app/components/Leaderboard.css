@@ -218,3 +218,90 @@ body {
     opacity: 0.5;
   }
 }
+@media (max-width: 768px) {
+
+  /* Pritaikymas fono vaizdui mobiliai */
+  html, body {
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+  }
+
+  /* Kauliukai mobiliai */
+  .dice-left,
+  .dice-right {
+    width: 80px;
+    height: 80px;
+  }
+
+  .dice-left {
+    top: 20%;
+    left: 2%;
+  }
+
+  .dice-right {
+    top: 35%;
+    right: 2%;
+  }
+
+  /* Podium pritaikymas */
+  .podium {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .podium-card {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  .podium-card .username {
+    font-size: 1.2rem;
+    top: 110px;
+  }
+
+  .podium-card .info-section {
+    margin-top: 140px;
+  }
+
+  .podium-card .wager, .podium-card .payout {
+    font-size: 1rem;
+  }
+
+  .podium-card.gold {
+    transform: translateY(0);
+    order: 1;
+  }
+
+  .podium-card.silver {
+    transform: translateY(0);
+    order: 2;
+  }
+
+  .podium-card.bronze {
+    transform: translateY(0);
+    order: 3;
+  }
+
+  .podium-card:hover {
+    transform: scale(1.02);
+  }
+
+  /* Liepsnos pritaikymas */
+  .podium-card::before {
+    width: 70px;
+    height: 70px;
+    top: -15px;
+  }
+
+  /* Zetonų fonas */
+  .jk-coin {
+    background-size: 80%;
+  }
+
+}
+
