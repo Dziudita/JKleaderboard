@@ -178,8 +178,8 @@ export default function Leaderboard() {
               <div key={index} className={`podium-card ${classes[index]}`}>
                 <div className="username">{maskName(user.username)}</div>
                 <div className="info-section">
-                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></div>
-                  <div className="payout">Payout: <strong>${payout.toFixed(3)}</strong></div>
+                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
+                  <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
                 </div>
               </div>
             );
@@ -207,8 +207,8 @@ export default function Leaderboard() {
                   <tr key={index}>
                     <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
                     <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(3)}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
                   </tr>
                 );
               })}
