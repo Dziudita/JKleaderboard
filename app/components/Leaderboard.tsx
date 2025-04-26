@@ -87,7 +87,7 @@ export default function Leaderboard() {
   const rewardPool = getRewardPool(totalWager);
 
   const maskName = (name: string = '') =>
-    name.length < 5 ? name.slice(0, 2) + '' : name.slice(0, 3) + '' + name.slice(-1);
+    name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
