@@ -127,9 +127,9 @@ export default function Leaderboard() {
         <p style={{ textAlign: 'center', color: '#f7c000' }}>
           Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
-        <p style={{ textAlign: 'center', color: '#f7c000' }}>
-          Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-        </p>
+       <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '1.2rem' }}>
+  If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline' }}>join the team now</a>!
+</p>
         <p style={{ textAlign: 'center', color: '#aaa' }}>
           This leaderboard refreshes automatically every 10–30 minutes.
         </p>
