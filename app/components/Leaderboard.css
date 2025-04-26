@@ -92,3 +92,6 @@ html, body {
 .medal, .podium-card.gold::after {
   display: none;
 }
+body {
+  overflow-x: hidden;  /* PANAIKINA horizontalų scroll */
+}
