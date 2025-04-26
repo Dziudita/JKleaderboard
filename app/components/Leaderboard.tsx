@@ -90,6 +90,14 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
+<div className="jk-coins-background">
+  <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
+  <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
+  <div className="jk-coin" style={{ top: '50%', left: '40%', width: '80px', height: '80px', animationDuration: '20s' }} />
+  <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
+  <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
+</div>
+
     <div style={{
       minHeight: '100vh',
       padding: '20px',
