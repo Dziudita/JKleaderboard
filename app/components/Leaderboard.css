@@ -2,7 +2,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden; /* Pašalina horizontalų scroll */
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   background-color: black;
@@ -35,8 +35,6 @@ html, body {
 }
 
 /* Bendras kortelių dizainas */
-/* Bendras kortelių dizainas */
-/* Bendras kortelių dizainas (paliekam kaip buvo) */
 .podium-card {
   width: 240px;
   height: 300px;
@@ -54,24 +52,29 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Svarbu: pradėti iš viršaus */
+  justify-content: flex-start;
   align-items: center;
+
+  /* PULSAVIMAS */
+  animation: pulseGlow 2.5s infinite ease-in-out;
 }
 
 /* Vartotojo vardas */
 .podium-card .username {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-top: 130px;  /* Tiksliau žemiau numerio */
-  margin-bottom: 10px;
+  margin-top: 20px;
   text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
   position: absolute;
   top: 130px;
 }
 
-/* Wager ir Payout pakeliami arčiau */
+/* Wager ir Payout */
 .podium-card .info-section {
-  margin-top: 160px; /* Pakeliam iš apačios */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 160px;
   text-align: center;
 }
 
@@ -79,7 +82,7 @@ html, body {
   font-size: 1.1rem;
   line-height: 1.4;
   text-shadow: 0 0 5px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.9);
-  margin: 3px 0;
+  margin: 0;
 }
 
 /* Kortelės su paveikslėliais */
@@ -106,28 +109,6 @@ html, body {
   box-shadow: none;
 }
 
-/* Tekstų išdėstymas ir stilius */
-.podium-card .username {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-top: 20px; /* Pakelia link laurų */
-  text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
-}
-
-.podium-card .info-section {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 20px; /* Nuleidžia info apačion */
-}
-
-.podium-card .wager, .podium-card .payout {
-  font-size: 1.1rem;
-  line-height: 1.4;
-  text-shadow: 0 0 5px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.9);
-  margin: 0;
-}
-
 /* Paslėpti nereikalingus */
 .medal, .podium-card.gold::after {
   display: none;
@@ -135,4 +116,47 @@ html, body {
 
 body {
   overflow-x: hidden;
+}
+
+/* 🔥 LIEPSNOS EFEKTAS PRIE KORTELIŲ 🔥 */
+.podium-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(255,140,0,0.6) 0%, rgba(255,0,0,0) 70%);
+  border-radius: 50%;
+  animation: flameBurst 1.8s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 🔥 KEYFRAMES 🔥 */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(255,215,0,0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255,255,255,0.7), 0 0 50px rgba(255,215,0,0.8);
+    transform: scale(1.02);
+  }
+}
+
+@keyframes flameBurst {
+  0% {
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.4);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-50%) scale(0.9);
+    opacity: 0.5;
+  }
 }
