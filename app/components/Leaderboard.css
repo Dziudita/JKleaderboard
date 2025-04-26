@@ -28,16 +28,56 @@ html, body {
 
 .jk-coin {
   position: absolute;
-  background-image: url('/jk-coin.png'); /* arba kelias iki žetono paveikslėlio */
+  background-image: url('/jk-coin.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.8; /* Padidintas ryškumas */
+  opacity: 0.9; /* Dar ryškesni */
   animation-name: spin;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
-  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); /* Švytėjimas */
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
 }
 
+/* KAULIUKŲ FONAS */
+.dice-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dice {
+  position: absolute;
+  background-image: url('/dice.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  animation: floatDice 8s infinite ease-in-out;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+}
+
+.dice-left {
+  top: 20%;
+  left: 3%;
+  width: 120px;
+  height: 120px;
+}
+
+.dice-right {
+  top: 25%;
+  right: 3%;
+  width: 120px;
+  height: 120px;
+}
+
+@keyframes floatDice {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
 
 /* SUKIMOSI ANIMACIJA */
 @keyframes spin {
