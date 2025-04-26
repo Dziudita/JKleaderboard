@@ -216,13 +216,13 @@ export default function Leaderboard() {
           </table>
         </div>
 
-       <p style={{ color: '#000', textAlign: 'center', marginTop: '30px', textShadow: '1px 1px 4px rgba(255,255,255,0.8)' }}>
+    <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
   Leaderboard will be paid out within 24 - 48 hours.
 </p>
-<p style={{ color: '#000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '1px 1px 4px rgba(255,255,255,0.8)' }}>
+<p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
   ⚠ Gamble Responsibly<br />
-  <span style={{ color: '#000', textShadow: '1px 1px 4px rgba(255,255,255,0.8)' }}>
-    Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#ffcc00', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+  <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+    Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
   </span>
 </p>
 
