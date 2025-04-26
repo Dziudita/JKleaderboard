@@ -118,7 +118,7 @@ export default function Leaderboard() {
           color: '#f7c000', 
           fontSize: '3rem', 
           textAlign: 'center', 
-          textShadow: '2px 2px 6px rgba(255,255,255,0.8)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           Johnny Knox Goated Monthly
         </h1>
@@ -126,7 +126,7 @@ export default function Leaderboard() {
         <p style={{ 
           textAlign: 'center', 
           color: '#f7c000', 
-          textShadow: '1px 1px 4px rgba(255,255,255,0.8)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           ✅ Minimum Wager Requirement: Players must wager at least $20,000
         </p>
@@ -137,7 +137,7 @@ export default function Leaderboard() {
           fontSize: '1.6rem', 
           textTransform: 'uppercase', 
           fontWeight: 'bold', 
-          textShadow: '1px 1px 5px rgba(255,255,255,0.9)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
         </p>
@@ -145,7 +145,7 @@ export default function Leaderboard() {
         <p style={{ 
           textAlign: 'center', 
           color: '#f7c000', 
-          textShadow: '1px 1px 5px rgba(255,255,255,0.8)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
@@ -154,7 +154,7 @@ export default function Leaderboard() {
           textAlign: 'center', 
           color: '#f7c000', 
           fontSize: '1.2rem', 
-          textShadow: '1px 1px 5px rgba(255,255,255,0.8)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a>!
         </p>
@@ -162,7 +162,7 @@ export default function Leaderboard() {
         <p style={{ 
           textAlign: 'center', 
           color: '#aaa', 
-          textShadow: '1px 1px 3px rgba(255,255,255,0.7)' 
+          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
           This leaderboard refreshes automatically every 10–30 minutes.
         </p>
