@@ -150,30 +150,14 @@ export default function Leaderboard() {
           Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
 
-        <p style={{
-  color: '#f7c000',
-  fontSize: '1.2rem',
-  textShadow: '2px 2px 5px rgba(0,0,0,1)',
-  background: 'rgba(0, 0, 0, 0.4)',
-  padding: '6px 12px',
-  borderRadius: '8px'
-}}>
-  If you want to be a part of the action, <a 
-  href="https://www.goated.com/r/JOHNNYKNOX" 
-  target="_blank" 
-  rel="noopener noreferrer" 
-  style={{ 
-    color: '#9eff3e', 
-    fontWeight: 'bold', 
-    textDecoration: 'underline', 
-    textTransform: 'uppercase',
-    textShadow: 'none' // ŠITAS panaikins bet kokį šešėlį
-  }}>
-  join the team now
-</a>
-
-</p>
-
+        <p style={{ 
+          textAlign: 'center', 
+          color: '#f7c000', 
+          fontSize: '1.2rem', 
+          textShadow: '2px 2px 5px rgba(0,0,0,0.8)' 
+        }}>
+          If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textShadow: '2px 2px 5px rgba(0,0,0,0.9)' }}>join the team now</a>!
+        </p>
 
         <p style={{ 
           textAlign: 'center', 
