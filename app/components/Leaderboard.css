@@ -60,11 +60,14 @@ html, body {
 }
 
 .dice-left {
-  top: 20%;
-  left: 3%;
+  top: 15%;        /* gali būti per aukštai – gal nuleisti pvz. 25%? */
+  left: 2%;
   width: 120px;
   height: 120px;
+  z-index: 1;      /* Įsitikink, kad jis virš background */
+  position: absolute;
 }
+
 
 .dice-right {
   top: 40%;   /* buvo 25% – nuleidome žemiau */
