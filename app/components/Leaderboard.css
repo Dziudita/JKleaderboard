@@ -2,8 +2,8 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;  /* Pašalina horizontalų scroll */
-  overflow-y: auto;    /* Tik vertikalus scroll */
+  overflow-x: hidden;
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   background-color: black;
@@ -14,6 +14,34 @@ html, body {
   background-attachment: fixed;
 }
 
+/* ZETONŲ ANIMUOTAS FONAS */
+.jk-coins-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.jk-coin {
+  position: absolute;
+  background-image: url('/jk-coin.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.25;
+  animation: spin 20s linear infinite;
+}
+
+/* SUKIMOSI ANIMACIJA */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* PODIUM STILIAI */
 .podium {
   display: flex;
   justify-content: center;
@@ -25,17 +53,8 @@ html, body {
   z-index: 1;
   background: none;
   max-width: 100%;
-  overflow: visible; /* NE hidden */
+  overflow: visible;
 }
-
-/* Apriboti kortelių dydį */
-.podium-card {
-  width: 240px;
-  height: 300px;
-  overflow: visible;  /* ŠITA vieta: leidžia animacijai laisvai veikti */
-  /* likęs stilius... */
-}
-
 
 /* Bendras kortelių dizainas */
 .podium-card {
@@ -57,9 +76,8 @@ html, body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
-  /* PULSAVIMAS */
   animation: pulseGlow 2.5s infinite ease-in-out;
+  overflow: visible;
 }
 
 /* Vartotojo vardas */
