@@ -31,10 +31,8 @@ html, body {
   background-image: url('/jk-coin.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.9; /* Dar ryškesni */
-  animation-name: spin;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  opacity: 0.9;
+  animation: spin 60s linear infinite;
   filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
 }
 
@@ -46,7 +44,7 @@ html, body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 1; /* Svarbu virš monetų */
 }
 
 .dice {
@@ -54,38 +52,36 @@ html, body {
   background-image: url('/dice.png');
   background-size: contain;
   background-repeat: no-repeat;
-  opacity: 0.85;
+  opacity: 0.9;
   animation: floatDice 8s infinite ease-in-out;
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
 }
 
+/* Kauliukai pozicijos */
 .dice-left {
-  top: 15%;        /* gali būti per aukštai – gal nuleisti pvz. 25%? */
+  top: 25%;     /* NULEIDŽIAMAS */
   left: 2%;
   width: 120px;
   height: 120px;
-  z-index: 1;      /* Įsitikink, kad jis virš background */
-  position: absolute;
 }
 
-
 .dice-right {
-  top: 40%;   /* buvo 25% – nuleidome žemiau */
+  top: 40%;     /* Žemiau */
   right: 3%;
   width: 120px;
   height: 120px;
+}
+
+/* ANIMACIJOS */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @keyframes floatDice {
   0% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(10deg); }
   100% { transform: translateY(0) rotate(0deg); }
-}
-
-/* SUKIMOSI ANIMACIJA */
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 /* PODIUM STILIAI */
@@ -95,15 +91,13 @@ html, body {
   align-items: flex-end;
   gap: 30px;
   margin-top: 60px;
-  flex-wrap: nowrap;
   position: relative;
-  z-index: 1;
+  z-index: 2;
   background: none;
   max-width: 100%;
   overflow: visible;
 }
 
-/* Bendras kortelių dizainas */
 .podium-card {
   width: 240px;
   height: 300px;
@@ -127,7 +121,6 @@ html, body {
   overflow: visible;
 }
 
-/* Vartotojo vardas */
 .podium-card .username {
   font-size: 1.5rem;
   font-weight: bold;
@@ -137,7 +130,6 @@ html, body {
   top: 130px;
 }
 
-/* Wager ir Payout */
 .podium-card .info-section {
   display: flex;
   flex-direction: column;
@@ -153,7 +145,6 @@ html, body {
   margin: 0;
 }
 
-/* Kortelės su paveikslėliais */
 .podium-card.gold {
   background-image: url('/gold-card.png');
   transform: translateY(-40px);
@@ -177,7 +168,6 @@ html, body {
   box-shadow: none;
 }
 
-/* Paslėpti nereikalingus */
 .medal, .podium-card.gold::after {
   display: none;
 }
@@ -186,7 +176,7 @@ body {
   overflow-x: hidden;
 }
 
-/* 🔥 LIEPSNOS EFEKTAS PRIE KORTELIŲ 🔥 */
+/* LIEPSNA */
 .podium-card::before {
   content: '';
   position: absolute;
@@ -202,7 +192,7 @@ body {
   z-index: 0;
 }
 
-/* 🔥 KEYFRAMES 🔥 */
+/* KEYFRAMES */
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(255,215,0,0.5);
