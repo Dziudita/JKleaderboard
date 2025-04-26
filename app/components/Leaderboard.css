@@ -37,8 +37,8 @@ html, body {
 /* Bendras kortelių dizainas */
 .podium-card {
   width: 240px;
-  height: 300px;
-  padding: 20px 10px;
+  height: 320px; /* Šiek tiek aukštesnės kortelės */
+  padding: 30px 10px 20px; /* Viršuje daugiau tarpo */
   border-radius: 20px;
   text-align: center;
   position: relative;
@@ -52,8 +52,33 @@ html, body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Išdėsto viršų ir apačią */
+  justify-content: flex-start; /* Pradėsim nuo viršaus */
   align-items: center;
+}
+
+/* Vardas viršuje */
+.podium-card .username {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px; /* Dabar mažesnis */
+  margin-bottom: 50px; /* Daugiau tarpo iki apačios */
+  text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
+}
+
+/* Info apačioje */
+.podium-card .info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: auto; /* Pastumia info į apačią */
+  margin-bottom: 10px;
+}
+
+.podium-card .wager, .podium-card .payout {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  text-shadow: 0 0 5px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.9);
+  margin: 0;
 }
 
 /* Kortelės su paveikslėliais */
