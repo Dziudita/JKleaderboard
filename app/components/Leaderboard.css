@@ -95,3 +95,18 @@ html, body {
 body {
   overflow-x: hidden;  /* PANAIKINA horizontalų scroll */
 }
+/* Patobulintas tekstų stilius kortelėse */
+.podium-card .username {
+  font-size: 1.4rem;      /* Šiek tiek didesnis vardas */
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
+}
+
+.podium-card .wager, .podium-card .payout {
+  font-size: 1.1rem;      /* Subtilus dydis */
+  line-height: 1.4;       /* Tarpai tarp eilučių */
+  text-shadow: 0 0 5px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.9);
+  margin: 4px 0;
+}
+
