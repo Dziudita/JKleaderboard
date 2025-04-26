@@ -159,18 +159,18 @@ export default function Leaderboard() {
   borderRadius: '8px'
 }}>
   If you want to be a part of the action, <a 
-    href="https://www.goated.com/r/JOHNNYKNOX" 
-    target="_blank" 
-    rel="noopener noreferrer" 
-    style={{ 
-      color: '#9eff3e', 
-      fontWeight: 'bold', 
-      textDecoration: 'underline', 
-      textShadow: '2px 2px 5px rgba(0,0,0,1)',
-      textTransform: 'uppercase' 
-    }}>
-    join the team now
-  </a>!
+  href="https://www.goated.com/r/JOHNNYKNOX" 
+  target="_blank" 
+  rel="noopener noreferrer" 
+  style={{ 
+    color: '#9eff3e', 
+    fontWeight: 'bold', 
+    textDecoration: 'underline', 
+    textTransform: 'uppercase'
+  }}>
+  join the team now
+</a>
+
 </p>
 
 
