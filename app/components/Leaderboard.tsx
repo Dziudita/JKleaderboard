@@ -85,23 +85,20 @@ export default function Leaderboard() {
   const eligibleUsers = users.filter((u) => (u.total || 0) >= 20000);
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
-  const medals = ['🥇', '🥈', '🥉'];
 
   const maskName = (name: string = '') =>
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-<div style={{
-  minHeight: '100vh',
-  padding: '20px',
-  color: '#fff',
-  fontFamily: 'Arial'
-}}>
-
-
+    <div style={{
+      minHeight: '100vh',
+      padding: '20px',
+      color: '#fff',
+      fontFamily: 'Arial'
+    }}>
       <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>
-    Johnny Knox Goated Monthly
-  </h1>
+        Johnny Knox Goated Monthly
+      </h1>
       <p style={{ textAlign: 'center', color: '#f7c000' }}>
         ✅ Minimum Wager Requirement: Players must wager at least $20,000
       </p>
@@ -118,6 +115,7 @@ export default function Leaderboard() {
         This leaderboard refreshes automatically every 10–30 minutes.
       </p>
 
+      {/* PAGRINDINĖ TOP 3 PADIUMA DALIS */}
       <div className="podium">
         {users.slice(0, 3).map((user, index) => {
           const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
@@ -126,15 +124,17 @@ export default function Leaderboard() {
           const classes = ['gold', 'silver', 'bronze'];
           return (
             <div key={index} className={`podium-card ${classes[index]}`}>
-              <div className="medal">{medals[index]}</div>
-              <h2>{maskName(user.username)}</h2>
-              <p>Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></p>
-              <p>Payout: <strong>${payout.toFixed(3)}</strong></p>
+              <div className="username">{maskName(user.username)}</div>
+              <div className="info-section">
+                <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></div>
+                <div className="payout">Payout: <strong>${payout.toFixed(3)}</strong></div>
+              </div>
             </div>
           );
         })}
       </div>
 
+      {/* KITI TOP 4–10 */}
       <div style={{ overflowX: 'auto', marginTop: '40px' }}>
         <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
           <thead>
@@ -163,16 +163,16 @@ export default function Leaderboard() {
           </tbody>
         </table>
       </div>
+
       <p style={{ color: '#aaa', textAlign: 'center', marginTop: '30px' }}>
         Leaderboard will be paid out within 24 - 48 hours.
       </p>
-<p style={{ color: '#ffcc00', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px' }}>
-  ⚠ Gamble Responsibly<br />
-  <span style={{ color: '#aaa' }}>
-    Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
-  </span>
-</p>
-
+      <p style={{ color: '#ffcc00', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px' }}>
+        ⚠ Gamble Responsibly<br />
+        <span style={{ color: '#aaa' }}>
+          Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+        </span>
+      </p>
     </div>
   );
 }
