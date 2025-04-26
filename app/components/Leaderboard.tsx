@@ -90,97 +90,102 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-<div className="jk-coins-background">
-  <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
-  <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
-  <div className="jk-coin" style={{ top: '50%', left: '40%', width: '80px', height: '80px', animationDuration: '20s' }} />
-  <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
-  <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
-</div>
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+      {/* Žetonų fonas */}
+      <div className="jk-coins-background">
+        <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
+        <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
+        <div className="jk-coin" style={{ top: '50%', left: '40%', width: '80px', height: '80px', animationDuration: '20s' }} />
+        <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
+        <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
+      </div>
 
-    <div style={{
-      minHeight: '100vh',
-      padding: '20px',
-      color: '#fff',
-      fontFamily: 'Arial'
-    }}>
-      <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>
-        Johnny Knox Goated Monthly
-      </h1>
-      <p style={{ textAlign: 'center', color: '#f7c000' }}>
-        ✅ Minimum Wager Requirement: Players must wager at least $20,000
-      </p>
-      <p style={{ textAlign: 'center', color: '#9eff3e' }}>
-        Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
-      </p>
-      <p style={{ textAlign: 'center', color: '#f7c000' }}>
-        Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-      </p>
-      <p style={{ textAlign: 'center', color: '#f7c000' }}>
-        Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-      </p>
-      <p style={{ textAlign: 'center', color: '#aaa' }}>
-        This leaderboard refreshes automatically every 10–30 minutes.
-      </p>
+      {/* TURINYS */}
+      <div style={{
+        position: 'relative',
+        zIndex: 1,
+        padding: '20px',
+        color: '#fff',
+        fontFamily: 'Arial'
+      }}>
+        <h1 style={{ color: '#f7c000', fontSize: '3rem', textAlign: 'center' }}>
+          Johnny Knox Goated Monthly
+        </h1>
+        <p style={{ textAlign: 'center', color: '#f7c000' }}>
+          ✅ Minimum Wager Requirement: Players must wager at least $20,000
+        </p>
+        <p style={{ textAlign: 'center', color: '#9eff3e' }}>
+          Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
+        </p>
+        <p style={{ textAlign: 'center', color: '#f7c000' }}>
+          Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+        </p>
+        <p style={{ textAlign: 'center', color: '#f7c000' }}>
+          Eligible Wagered: ${totalEligibleWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+        </p>
+        <p style={{ textAlign: 'center', color: '#aaa' }}>
+          This leaderboard refreshes automatically every 10–30 minutes.
+        </p>
 
-      {/* PAGRINDINĖ TOP 3 PADIUMA DALIS */}
-      <div className="podium">
-        {users.slice(0, 3).map((user, index) => {
-          const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-            ? (user.total / totalEligibleWager) * rewardPool
-            : 0;
-          const classes = ['gold', 'silver', 'bronze'];
-          return (
-            <div key={index} className={`podium-card ${classes[index]}`}>
-              <div className="username">{maskName(user.username)}</div>
-              <div className="info-section">
-                <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></div>
-                <div className="payout">Payout: <strong>${payout.toFixed(3)}</strong></div>
+        {/* PAGRINDINĖ TOP 3 PADIUMA DALIS */}
+        <div className="podium">
+          {users.slice(0, 3).map((user, index) => {
+            const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
+              ? (user.total / totalEligibleWager) * rewardPool
+              : 0;
+            const classes = ['gold', 'silver', 'bronze'];
+            return (
+              <div key={index} className={`podium-card ${classes[index]}`}>
+                <div className="username">{maskName(user.username)}</div>
+                <div className="info-section">
+                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></div>
+                  <div className="payout">Payout: <strong>${payout.toFixed(3)}</strong></div>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
 
-      {/* KITI TOP 4–10 */}
-      <div style={{ overflowX: 'auto', marginTop: '40px' }}>
-        <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
-          <thead>
-            <tr>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.slice(3, 10).map((user, index) => {
-              const wager = user.total || 0;
-              const payout = wager >= 20000 && rewardPool > 0 && totalEligibleWager > 0
-                ? (wager / totalEligibleWager) * rewardPool
-                : 0;
-              return (
-                <tr key={index}>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(3)}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+        {/* KITI TOP 4–10 */}
+        <div style={{ overflowX: 'auto', marginTop: '40px' }}>
+          <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr>
+                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
+                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
+                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
+                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.slice(3, 10).map((user, index) => {
+                const wager = user.total || 0;
+                const payout = wager >= 20000 && rewardPool > 0 && totalEligibleWager > 0
+                  ? (wager / totalEligibleWager) * rewardPool
+                  : 0;
+                return (
+                  <tr key={index}>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(3)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
 
-      <p style={{ color: '#aaa', textAlign: 'center', marginTop: '30px' }}>
-        Leaderboard will be paid out within 24 - 48 hours.
-      </p>
-      <p style={{ color: '#ffcc00', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px' }}>
-        ⚠ Gamble Responsibly<br />
-        <span style={{ color: '#aaa' }}>
-          Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
-        </span>
-      </p>
+        <p style={{ color: '#aaa', textAlign: 'center', marginTop: '30px' }}>
+          Leaderboard will be paid out within 24 - 48 hours.
+        </p>
+        <p style={{ color: '#ffcc00', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px' }}>
+          ⚠ Gamble Responsibly<br />
+          <span style={{ color: '#aaa' }}>
+            Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+          </span>
+        </p>
+      </div>
     </div>
   );
 }
