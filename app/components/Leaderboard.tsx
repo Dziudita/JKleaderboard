@@ -87,7 +87,7 @@ export default function Leaderboard() {
   const rewardPool = getRewardPool(totalWager);
 
   const maskName = (name: string = '') =>
-    name.length < 5 ? name.slice(0, 2) + '' : name.slice(0, 3) + '' + name.slice(-1);
+    name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
@@ -175,7 +175,7 @@ export default function Leaderboard() {
               : 0;
             const classes = ['gold', 'silver', 'bronze'];
             return (
-              <div key={index} className={podium-card ${classes[index]}}>
+              <div key={index} className={`podium-card ${classes[index]}`}>
                 <div className="username">{maskName(user.username)}</div>
                 <div className="info-section">
                   <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 3 })}</strong></div>
@@ -216,16 +216,15 @@ export default function Leaderboard() {
           </table>
         </div>
 
-    <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-  Leaderboard will be paid out within 24 - 48 hours.
-</p>
-<p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-  ⚠ Gamble Responsibly<br />
-  <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-    Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
-  </span>
-</p>
-
+        <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+          Leaderboard will be paid out within 24 - 48 hours.
+        </p>
+        <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+          ⚠ Gamble Responsibly<br />
+          <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+            Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+          </span>
+        </p>
       </div>
     </div>
   );
