@@ -67,7 +67,7 @@ html, body {
 }
 
 .dice-right {
-  top: 35%;   /* buvo 25% – nuleidome žemiau */
+  top: 40%;   /* buvo 25% – nuleidome žemiau */
   right: 3%;
   width: 120px;
   height: 120px;
