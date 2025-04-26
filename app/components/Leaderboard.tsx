@@ -107,91 +107,84 @@ export default function Leaderboard() {
       </div>
 
       {/* TURINYS */}
-      <div style={{
-        position: 'relative',
-        zIndex: 1,
-        padding: '20px',
-        color: '#fff',
-        fontFamily: 'Arial',
-        textAlign: 'center'
-      }}>
-        <h1 style={{
-          color: '#f7c000',
-          fontSize: '3rem',
-          textShadow: '3px 3px 8px rgba(0,0,0,1)',
-          background: 'rgba(0, 0, 0, 0.6)',
-          padding: '8px 14px',
-          borderRadius: '10px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          Johnny Knox Goated Monthly
-        </h1>
+     <div style={{
+  position: 'relative',
+  zIndex: 1,
+  padding: '20px',
+  color: '#fff',
+  fontFamily: 'Arial',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '10px'
+}}>
+  <h1 style={{
+    color: '#f7c000',
+    fontSize: '3rem',
+    textShadow: '3px 3px 8px rgba(0,0,0,1)',
+    background: 'rgba(0, 0, 0, 0.6)',
+    padding: '8px 14px',
+    borderRadius: '10px'
+  }}>
+    Johnny Knox Goated Monthly
+  </h1>
 
-        <p style={{
-          color: '#f7c000',
-          textShadow: '2px 2px 6px rgba(0,0,0,0.9)',
-          background: 'rgba(0, 0, 0, 0.4)',
-          padding: '6px 12px',
-          borderRadius: '8px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          ✅ Minimum Wager Requirement: Players must wager at least $20,000
-        </p>
+  <p style={{
+    color: '#f7c000',
+    textShadow: '2px 2px 6px rgba(0,0,0,0.9)',
+    background: 'rgba(0, 0, 0, 0.4)',
+    padding: '6px 12px',
+    borderRadius: '8px'
+  }}>
+    ✅ Minimum Wager Requirement: Players must wager at least $20,000
+  </p>
 
-        <p style={{
-          color: '#9eff3e',
-          fontSize: '1.6rem',
-          textTransform: 'uppercase',
-          fontWeight: 'bold',
-          textShadow: '3px 3px 8px rgba(0,0,0,1)',
-          background: 'rgba(0,0,0,0.5)',
-          padding: '6px 14px',
-          borderRadius: '8px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
-        </p>
+  <p style={{
+    color: '#9eff3e',
+    fontSize: '1.6rem',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
+    textShadow: '3px 3px 8px rgba(0,0,0,1)',
+    background: 'rgba(0,0,0,0.5)',
+    padding: '6px 14px',
+    borderRadius: '8px'
+  }}>
+    Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
+  </p>
 
-        <p style={{
-          color: '#f7c000',
-          textShadow: '2px 2px 6px rgba(0,0,0,1)',
-          background: 'rgba(0, 0, 0, 0.4)',
-          padding: '6px 12px',
-          borderRadius: '8px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-        </p>
+  <p style={{
+    color: '#f7c000',
+    textShadow: '2px 2px 6px rgba(0,0,0,1)',
+    background: 'rgba(0, 0, 0, 0.4)',
+    padding: '6px 12px',
+    borderRadius: '8px'
+  }}>
+    Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+  </p>
 
-        <p style={{
-          color: '#f7c000',
-          fontSize: '1.2rem',
-          textShadow: '2px 2px 5px rgba(0,0,0,1)',
-          background: 'rgba(0, 0, 0, 0.4)',
-          padding: '6px 12px',
-          borderRadius: '8px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textShadow: '2px 2px 5px rgba(0,0,0,1)' }}>join the team now</a>!
-        </p>
+  <p style={{
+    color: '#f7c000',
+    fontSize: '1.2rem',
+    textShadow: '2px 2px 5px rgba(0,0,0,1)',
+    background: 'rgba(0, 0, 0, 0.4)',
+    padding: '6px 12px',
+    borderRadius: '8px'
+  }}>
+    If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textShadow: '2px 2px 5px rgba(0,0,0,1)' }}>join the team now</a>!
+  </p>
 
-        <p style={{
-          color: '#aaa',
-          textShadow: '1px 1px 4px rgba(0,0,0,1)',
-          background: 'rgba(0, 0, 0, 0.3)',
-          padding: '4px 10px',
-          borderRadius: '6px',
-          display: 'inline-block',
-          margin: '10px auto'
-        }}>
-          This leaderboard refreshes automatically every 10–30 minutes.
-        </p>
-      </div>
+  <p style={{
+    color: '#aaa',
+    textShadow: '1px 1px 4px rgba(0,0,0,1)',
+    background: 'rgba(0, 0, 0, 0.3)',
+    padding: '4px 10px',
+    borderRadius: '6px'
+  }}>
+    This leaderboard refreshes automatically every 10–30 minutes.
+  </p>
+</div>
+
     </div>
   );
 }
