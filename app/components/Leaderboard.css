@@ -38,7 +38,7 @@ html, body {
 .podium-card {
   width: 240px;
   height: 320px;
-  padding: 40px 10px 30px; /* Daugiau viršuje */
+  padding: 30px 10px 20px;
   border-radius: 20px;
   text-align: center;
   position: relative;
@@ -56,23 +56,25 @@ html, body {
   align-items: center;
 }
 
+/* NICK VIDURYJE */
 .podium-card .username {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin: 0; /* Panaikinam margin-top */
+  margin: 0;
   text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
+  margin-top: 60px; /* Pastumia žemyn iki vidurio */
 }
 
+/* VISA INFO APAČIOJE */
 .podium-card .info-section {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  margin-bottom: 0;
+  gap: 4px;
+  margin-bottom: 10px;
 }
 
 .podium-card .wager, .podium-card .payout {
-  font-size: 1.1rem;
-  line-height: 1.4;
+  font-size: 1rem;  /* Mažesnis šriftas */
   text-shadow: 0 0 5px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.9);
   margin: 0;
 }
