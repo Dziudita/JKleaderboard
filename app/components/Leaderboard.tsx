@@ -121,9 +121,9 @@ export default function Leaderboard() {
         <p style={{ textAlign: 'center', color: '#f7c000' }}>
           ✅ Minimum Wager Requirement: Players must wager at least $20,000
         </p>
-        <p style={{ textAlign: 'center', color: '#9eff3e' }}>
-          Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
-        </p>
+       <p style={{ textAlign: 'center', color: '#9eff3e', fontSize: '1.6rem', textTransform: 'uppercase', fontWeight: 'bold' }}>
+  Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
+</p>
         <p style={{ textAlign: 'center', color: '#f7c000' }}>
           Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
         </p>
