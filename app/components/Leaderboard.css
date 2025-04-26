@@ -2,9 +2,9 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden; /* <-- PAŠALINA horizontalų scrollą */
   background-color: black;
-  background-image: url('/background.png'); /* <-- tavo fono paveikslėlis */
+  background-image: url('/background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
