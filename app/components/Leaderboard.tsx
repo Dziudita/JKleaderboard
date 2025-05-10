@@ -82,7 +82,7 @@ export default function Leaderboard() {
   }, []);
 
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
-  const eligibleUsers = users.filter((u) => (u.total || 0) >= 20000);
+  const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000); // 🔄 20k -> 10k
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
 
@@ -128,7 +128,7 @@ export default function Leaderboard() {
           color: '#f7c000', 
           textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
         }}>
-          ✅ Minimum Wager Requirement: Players must wager at least $20,000
+          ✅ Minimum Wager Requirement: Players must wager at least $10,000
         </p>
 
         <p style={{ 
@@ -171,15 +171,15 @@ export default function Leaderboard() {
         <div className="podium">
           {users.slice(0, 3).map((user, index) => {
             const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-              ? (user.total / totalEligibleWager) * rewardPool
+              ? (user.total / totalEligibleWager) * rewardPool * 0.6
               : 0;
             const classes = ['gold', 'silver', 'bronze'];
             return (
               <div key={index} className={`podium-card ${classes[index]}`}>
                 <div className="username">{maskName(user.username)}</div>
                 <div className="info-section">
-                 <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
-<div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
+                  <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
                 </div>
               </div>
             );
@@ -200,15 +200,15 @@ export default function Leaderboard() {
             <tbody>
               {users.slice(3, 10).map((user, index) => {
                 const wager = user.total || 0;
-                const payout = wager >= 20000 && rewardPool > 0 && totalEligibleWager > 0
-                  ? (wager / totalEligibleWager) * rewardPool
+                const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+                  ? (wager / totalEligibleWager) * rewardPool * 0.6
                   : 0;
                 return (
                   <tr key={index}>
                     <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
                     <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                   <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-<td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
                   </tr>
                 );
               })}
