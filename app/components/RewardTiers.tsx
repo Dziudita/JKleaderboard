@@ -24,19 +24,19 @@ const rewardData = [
 const RewardTiers = () => {
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold text-yellow-400 mb-4">Monthly Wager Rewards</h2>
+      <h2 className="text-3xl font-bold text-yellow-400 mb-4">Monthly Wager Rewards (60%)</h2>
       <table className="min-w-full bg-black text-white border border-yellow-400">
         <thead>
           <tr className="text-yellow-400 border-b border-yellow-400">
             <th className="py-2 px-4 text-left">Monthly Wager</th>
-            <th className="py-2 px-4 text-left">Reward</th>
+            <th className="py-2 px-4 text-left">Reward (60%)</th>
           </tr>
         </thead>
         <tbody>
           {rewardData.map((item, index) => (
             <tr key={index} className="border-b border-gray-700">
               <td className="py-2 px-4">${item.wager.toLocaleString()}</td>
-              <td className="py-2 px-4">${item.reward.toLocaleString()}</td>
+              <td className="py-2 px-4">${(item.reward * 0.6).toLocaleString(undefined, { maximumFractionDigits: 2 })}</td>
             </tr>
           ))}
         </tbody>
