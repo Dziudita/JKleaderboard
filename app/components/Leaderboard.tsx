@@ -84,7 +84,7 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-    <div style={{ backgroundColor: 'black', color: '#f7c000', minHeight: '100vh', padding: '20px', fontFamily: 'Arial' }}>
+    <div style={{ backgroundColor: 'black', color: '#ffffff', minHeight: '100vh', padding: '20px', fontFamily: 'Arial' }}>
       <h1 style={{ fontSize: '3rem', textAlign: 'center' }}>Johnny Knox Goated Monthly</h1>
       <p style={{ textAlign: 'center' }}>
         ✅ Minimum Wager Requirement: Players must wager at least $10,000
@@ -98,10 +98,10 @@ export default function Leaderboard() {
         <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Place</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>User</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Wager</th>
-              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Payout</th>
+              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Place</th>
+              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>User</th>
+              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Wager</th>
+              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Payout</th>
             </tr>
           </thead>
           <tbody>
@@ -126,12 +126,6 @@ export default function Leaderboard() {
 
       <p style={{ textAlign: 'center', marginTop: '30px' }}>
         Leaderboard will be paid out within 24 - 48 hours.
-      </p>
-      <p style={{ textAlign: 'center', fontSize: '0.9rem', marginTop: '40px' }}>
-        ⚠ Gamble Responsibly — Visit{' '}
-        <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000' }}>
-          BeGambleAware.org
-        </a>
       </p>
     </div>
   );
