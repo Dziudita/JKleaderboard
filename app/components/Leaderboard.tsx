@@ -7,8 +7,6 @@ type User = {
   total?: number;
 };
 
-const REFRESH_INTERVAL = 30 * 60 * 1000;
-
 const rewardTiers = [
   { threshold: 5000000, pool: 11400 },
   { threshold: 4500000, pool: 10260 },
@@ -93,15 +91,6 @@ export default function Leaderboard() {
       </p>
       <p style={{ textAlign: 'center', fontSize: '1.4rem', fontWeight: 'bold' }}>
         Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
-      </p>
-      <p style={{ textAlign: 'center' }}>
-        Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-      </p>
-      <p style={{ textAlign: 'center', fontSize: '1.1rem' }}>
-        If you want to be a part of the action,{' '}
-        <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e' }}>
-          JOIN THE TEAM NOW
-        </a>
       </p>
 
       {/* TOP 10 LENTELE */}
