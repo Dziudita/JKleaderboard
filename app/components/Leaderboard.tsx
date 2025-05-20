@@ -111,7 +111,10 @@ export default function Leaderboard() {
               return (
                 <tr key={index}>
                   <td style={{ textAlign: 'center', padding: '10px' }}>•</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>{user.username || 'Anonymous'}</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>
+  {user.username === 'Dziii' ? 'Cherry' : user.username || 'Anonymous'}
+</td>
+
                   <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
                 </tr>
