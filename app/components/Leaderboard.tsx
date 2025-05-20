@@ -80,9 +80,6 @@ export default function Leaderboard() {
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
 
-  const maskName = (name: string = '') =>
-    name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
-
   return (
     <div style={{ backgroundColor: 'black', color: '#ffffff', minHeight: '100vh', padding: '20px', fontFamily: 'Arial' }}>
       <h1 style={{ fontSize: '3rem', textAlign: 'center' }}>Johnny Knox Goated Monthly</h1>
@@ -114,7 +111,7 @@ export default function Leaderboard() {
               return (
                 <tr key={index}>
                   <td style={{ textAlign: 'center', padding: '10px' }}>{index + 1}.</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>{user.username || 'Anonymous'}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
                 </tr>
