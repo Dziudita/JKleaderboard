@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import './Leaderboard.css';
-
-const REFRESH_INTERVAL = 30 * 60 * 1000;
 
 type User = {
   username?: string;
   total?: number;
 };
+
+const REFRESH_INTERVAL = 30 * 60 * 1000;
 
 const rewardTiers = [
   { threshold: 5000000, pool: 11400 },
@@ -73,16 +72,13 @@ export default function Leaderboard() {
 
   useEffect(() => {
     fetch('/api/leaderboard')
-      .then((res) => {
-        if (!res.ok) throw new Error('API error');
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => setUsers(data || []))
       .catch(() => setUsers([]));
   }, []);
 
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
-  const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000); // 🔄 20k -> 10k
+  const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000);
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
 
@@ -90,142 +86,64 @@ export default function Leaderboard() {
     name.length < 5 ? name.slice(0, 2) + '***' : name.slice(0, 3) + '***' + name.slice(-1);
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      {/* Žetonų fonas */}
-      <div className="jk-coins-background">
-        <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
-        <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
-        <div className="jk-coin" style={{ top: '50%', left: '40%', width: '80px', height: '80px', animationDuration: '20s' }} />
-        <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
-        <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
-      </div>
+    <div style={{ backgroundColor: 'black', color: '#f7c000', minHeight: '100vh', padding: '20px', fontFamily: 'Arial' }}>
+      <h1 style={{ fontSize: '3rem', textAlign: 'center' }}>Johnny Knox Goated Monthly</h1>
+      <p style={{ textAlign: 'center' }}>
+        ✅ Minimum Wager Requirement: Players must wager at least $10,000
+      </p>
+      <p style={{ textAlign: 'center', fontSize: '1.4rem', fontWeight: 'bold' }}>
+        Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
+      </p>
+      <p style={{ textAlign: 'center' }}>
+        Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+      </p>
+      <p style={{ textAlign: 'center', fontSize: '1.1rem' }}>
+        If you want to be a part of the action,{' '}
+        <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e' }}>
+          JOIN THE TEAM NOW
+        </a>
+      </p>
 
-      {/* Kauliukų fonas */}
-      <div className="dice-background">
-        <div className="dice dice-left" />
-        <div className="dice dice-right" />
-      </div>
-
-      {/* TURINYS */}
-      <div style={{
-        position: 'relative',
-        zIndex: 1,
-        padding: '20px',
-        color: '#fff',
-        fontFamily: 'Arial'
-      }}>
-        <h1 style={{ 
-          color: '#f7c000', 
-          fontSize: '3rem', 
-          textAlign: 'center', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          Johnny Knox Goated Monthly
-        </h1>
-
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#f7c000', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          ✅ Minimum Wager Requirement: Players must wager at least $10,000
-        </p>
-
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#9eff3e', 
-          fontSize: '1.6rem', 
-          textTransform: 'uppercase', 
-          fontWeight: 'bold', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
-        </p>
-
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#f7c000', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-        </p>
-
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#f7c000', 
-          fontSize: '1.2rem', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a>!
-        </p>
-
-        <p style={{ 
-          textAlign: 'center', 
-          color: '#aaa', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          This leaderboard refreshes automatically every 10–30 minutes.
-        </p>
-
-        {/* PAGRINDINĖ TOP 3 */}
-        <div className="podium">
-          {users.slice(0, 3).map((user, index) => {
-            const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-              ? (user.total / totalEligibleWager) * rewardPool * 0.6
-              : 0;
-            const classes = ['gold', 'silver', 'bronze'];
-            return (
-              <div key={index} className={`podium-card ${classes[index]}`}>
-                <div className="username">{maskName(user.username)}</div>
-                <div className="info-section">
-                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
-                  <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* TOP 4–10 */}
-        <div style={{ overflowX: 'auto', marginTop: '40px' }}>
-          <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
-                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
-                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
-                <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.slice(3, 10).map((user, index) => {
-                const wager = user.total || 0;
-                const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+      {/* TOP 10 LENTELE */}
+      <div style={{ overflowX: 'auto', marginTop: '40px' }}>
+        <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr>
+              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Place</th>
+              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>User</th>
+              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Wager</th>
+              <th style={{ borderBottom: '2px solid #f7c000', padding: '10px' }}>Payout</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.slice(0, 10).map((user, index) => {
+              const wager = user.total || 0;
+              const payout =
+                wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
                   ? (wager / totalEligibleWager) * rewardPool * 0.6
                   : 0;
-                return (
-                  <tr key={index}>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-
-        <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-          Leaderboard will be paid out within 24 - 48 hours.
-        </p>
-        <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-          ⚠ Gamble Responsibly<br />
-          <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-            Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
-          </span>
-        </p>
+              return (
+                <tr key={index}>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>{index + 1}.</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
+
+      <p style={{ textAlign: 'center', marginTop: '30px' }}>
+        Leaderboard will be paid out within 24 - 48 hours.
+      </p>
+      <p style={{ textAlign: 'center', fontSize: '0.9rem', marginTop: '40px' }}>
+        ⚠ Gamble Responsibly — Visit{' '}
+        <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000' }}>
+          BeGambleAware.org
+        </a>
+      </p>
     </div>
   );
 }
