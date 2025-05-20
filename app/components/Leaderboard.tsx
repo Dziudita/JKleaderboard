@@ -95,7 +95,7 @@ export default function Leaderboard() {
         <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Place</th>
+              <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}></th>
               <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>User</th>
               <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Wager</th>
               <th style={{ borderBottom: '2px solid #ffffff', padding: '10px' }}>Payout</th>
@@ -110,7 +110,7 @@ export default function Leaderboard() {
                   : 0;
               return (
                 <tr key={index}>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>{index + 1}.</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>•</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>{user.username || 'Anonymous'}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
