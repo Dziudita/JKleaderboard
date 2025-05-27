@@ -76,11 +76,15 @@ export default function Leaderboard() {
         return res.json();
       })
       .then((data) => {
-        console.log('Fetched data:', data);
-        setUsers(data.users || []);
+        console.log('API atsakymas:', data);
+        const mapped = (data.data || []).map((item: any) => ({
+          username: item.name,
+          total: item.wagered?.all_time || 0,
+        }));
+        setUsers(mapped);
       })
       .catch((err) => {
-        console.error('API load error:', err);
+        console.error('Klaida su API:', err);
         setUsers([]);
       });
   }, []);
