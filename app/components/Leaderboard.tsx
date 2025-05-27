@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import './Leaderboard.css';
 
 type User = {
-  username?: string;
-  total?: number;
+  username: string;
+  total: number;
 };
 
 const rewardTiers = [
@@ -75,13 +75,19 @@ export default function Leaderboard() {
         if (!res.ok) throw new Error('API error');
         return res.json();
       })
-      .then((data) => setUsers(data || []))
-      .catch(() => setUsers([]));
+      .then((data) => {
+        console.log('Fetched data:', data);
+        setUsers(data.users || []);
+      })
+      .catch((err) => {
+        console.error('API load error:', err);
+        setUsers([]);
+      });
   }, []);
 
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
-  const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000);
-  const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
+  const eligibleUsers = users.filter((u) => u.total >= 10000);
+  const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + u.total, 0);
   const rewardPool = getRewardPool(totalWager);
 
   return (
