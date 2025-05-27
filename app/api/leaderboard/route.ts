@@ -1,7 +1,7 @@
 export const revalidate = 0;
 
 export async function GET() {
-  const res = await fetch("https://api.goated.com/user2/affiliate/referral-leaderboard/OQID5MA", {
+  const res = await fetch("https://apis.goated.com/user/affiliate/referral-leaderboard/OQID5MA", {
     headers: {
       'Cache-Control': 'no-store',
     },
