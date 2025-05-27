@@ -71,15 +71,16 @@ export default function Leaderboard() {
   const [users, setUsers] = useState<User[]>([]);
   const { days, hours, minutes, seconds } = useCountdownToEndOfMonthUTC();
 
-  useEffect(() => {
-    fetch('/api/leaderboard')
-      .then((res) => {
-        if (!res.ok) throw new Error('API error');
-        return res.json();
-      })
-      .then((data) => setUsers(data || []))
-      .catch(() => setUsers([]));
-  }, []);
+ useEffect(() => {
+  fetch('https://apis.goated.com/user/affiliate/referral-leaderboard/OQID5MA')
+    .then((res) => {
+      if (!res.ok) throw new Error('API error');
+      return res.json();
+    })
+    .then((data) => setUsers(data || []))
+    .catch(() => setUsers([]));
+}, []);
+
 
   const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
   const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000); // 🔄 20k -> 10k
