@@ -70,18 +70,14 @@ export default function Leaderboard() {
   const { days, hours, minutes, seconds } = useCountdownToEndOfMonthUTC();
 
   useEffect(() => {
-  fetch('/api/leaderboard')
+    fetch('/api/leaderboard')
       .then((res) => {
         if (!res.ok) throw new Error('API error');
         return res.json();
       })
       .then((data) => {
         console.log('API atsakymas:', data);
-        const mapped = (data.data || []).map((item: any) => ({
-          username: item.name,
-          total: item.wagered?.all_time || 0,
-        }));
-        setUsers(mapped);
+        setUsers(data || []);
       })
       .catch((err) => {
         console.error('Klaida su API:', err);
@@ -89,7 +85,7 @@ export default function Leaderboard() {
       });
   }, []);
 
-  const totalWager = users.reduce((sum, user) => sum + (user.total || 0), 0);
+  const totalWager = users.reduce((sum, user) => sum + user.total, 0);
   const eligibleUsers = users.filter((u) => u.total >= 10000);
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + u.total, 0);
   const rewardPool = getRewardPool(totalWager);
@@ -120,15 +116,15 @@ export default function Leaderboard() {
           </thead>
           <tbody>
             {users.slice(0, 10).map((user, index) => {
-              const wager = user.total || 0;
-              const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
-                ? (wager / totalEligibleWager) * rewardPool * 0.6
+              const payout = user.total >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+                ? (user.total / totalEligibleWager) * rewardPool * 0.6
                 : 0;
+
               return (
                 <tr key={index}>
                   <td style={{ textAlign: 'center', padding: '10px' }}>•</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>{user.username}</td>
-                  <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                  <td style={{ textAlign: 'center', padding: '10px' }}>${user.total.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
                   <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
                 </tr>
               );
