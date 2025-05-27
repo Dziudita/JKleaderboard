@@ -21,7 +21,7 @@ export async function GET() {
   const sorted = data.data
     .map((user: any) => ({
       username: user.name,
-      total: user.wagered?.this_month || 0,
+      total: user.wagered?.all_time || 0, // arba this_month
     }))
     .sort((a: any, b: any) => b.total - a.total);
 
