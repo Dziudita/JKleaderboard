@@ -70,7 +70,7 @@ export default function Leaderboard() {
   const { days, hours, minutes, seconds } = useCountdownToEndOfMonthUTC();
 
   useEffect(() => {
-    fetch('https://apis.goated.com/user/affiliate/referral-leaderboard/OQID5MA')
+  fetch('/api/leaderboard')
       .then((res) => {
         if (!res.ok) throw new Error('API error');
         return res.json();
