@@ -86,8 +86,16 @@ export default function Leaderboard() {
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
 
-  const maskName = (name: string = '') =>
-    name.length < 5 ? name.slice(0, 2) + '' : name.slice(0, 3) + '' + name.slice(-1);
+  const maskName = (name: string = '') => {
+  if (name.length <= 3) {
+    return name[0] + '***';
+  }
+  if (name.length <= 6) {
+    return name.slice(0, 2) + '***';
+  }
+  return name.slice(0, 3) + '***' + name.slice(-1);
+};
+
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
