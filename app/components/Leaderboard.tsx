@@ -96,7 +96,6 @@ export default function Leaderboard() {
   return name.slice(0, 3) + '*' + name.slice(-1);
 };
 
-
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
       {/* Žetonų fonas */}
