@@ -230,8 +230,8 @@ body {
   /* Kauliukai mobiliai */
   .dice-left,
   .dice-right {
-    width: 80px;
-    height: 80px;
+    width: 130px;
+    height: 130px;
   }
 
   .dice-left {
