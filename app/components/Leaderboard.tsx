@@ -182,7 +182,7 @@ export default function Leaderboard() {
               : 0;
             const classes = ['gold', 'silver', 'bronze'];
             return (
-              <div key={index} className={podium-card ${classes[index]}}>
+             <div key={index} className={`podium-card ${classes[index]}`}>
 
                 <div className="username">{maskName(user.username)}</div>
                 <div className="info-section">
