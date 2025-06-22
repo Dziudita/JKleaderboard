@@ -124,14 +124,10 @@ export default function Leaderboard() {
       }}>
      <div className="w-full flex justify-center">
   <div className="w-full flex justify-center">
- <h1 style={{ 
-          color: '#f7c000', 
-          fontSize: '3rem', 
-          textAlign: 'center', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          Johnny Knox Goated Monthly
-        </h1>
+<h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-orange-400 to-yellow-300 animate-pulse drop-shadow-[0_0_20px_red] text-center">
+  Johnny Knox Goated Monthly
+</h1>
+
 
 
         <p style={{ 
