@@ -125,14 +125,14 @@ html, body {
   margin-top: 20px;
   text-shadow: 0 0 6px rgba(0,0,0,0.8), 0 0 12px rgba(0,0,0,1);
   position: absolute;
-  top: 130px;
+  top: 170px;
 }
 
 .podium-card .info-section {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-top: 160px;
+  margin-top: 200px;
   text-align: center;
 }
 
