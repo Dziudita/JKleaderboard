@@ -143,7 +143,7 @@ export default function Leaderboard() {
             </p>
 
             <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '1.2rem', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
-              If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#9eff3e', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a>!
+              If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a>!
             </p>
 
             <p style={{ textAlign: 'center', color: '#aaa', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
