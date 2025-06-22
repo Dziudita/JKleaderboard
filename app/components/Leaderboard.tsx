@@ -122,7 +122,6 @@ export default function Leaderboard() {
         color: '#fff',
         fontFamily: 'Arial'
       }}>
-     <div className="w-full flex justify-center">
   <div className="w-full flex justify-center">
 <h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-500 to-yellow-400 animate-pulse drop-shadow-[0_0_20px_red] text-center">
           Johnny Knox Goated Monthly
