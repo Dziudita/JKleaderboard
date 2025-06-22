@@ -117,16 +117,17 @@ export default function Leaderboard() {
       <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
         <div className="w-full flex justify-center">
           <div>
-            <<h1 style={{
-  textAlign: 'center',
-  color: '#f7c000',
-  fontSize: '3rem',
-  fontWeight: 'bold',
-  textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
-  marginBottom: '10px'
+           <p style={{ 
+  textAlign: 'center', 
+  color: '#f7c000', 
+  fontSize: '2.5rem', 
+  fontWeight: 'bold', 
+  textTransform: 'uppercase', 
+  textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
 }}>
   Johnny Knox Goated Monthly
-</h1>
+</p>
+
 
 
             <p style={{ textAlign: 'center', color: '#f7c000', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
