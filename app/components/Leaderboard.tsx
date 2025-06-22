@@ -122,14 +122,10 @@ export default function Leaderboard() {
         color: '#fff',
         fontFamily: 'Arial'
       }}>
-        <h1 style={{ 
-          color: '#f7c000', 
-          fontSize: '3rem', 
-          textAlign: 'center', 
-          textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-        }}>
-          Johnny Knox Goated Monthly
-        </h1>
+       <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 animate-pulse drop-shadow-[0_0_20px_red]">
+  JohnnyKnox Goated LB
+</h1>
+
 
         <p style={{ 
           textAlign: 'center', 
