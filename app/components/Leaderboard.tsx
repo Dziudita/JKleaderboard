@@ -85,19 +85,19 @@ export default function Leaderboard() {
   const eligibleUsers = users.filter((u) => (u.total || 0) >= 10000); // 🔄 20k -> 10k
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
-
   const maskName = (name: string = '') => {
-  if (name.length <= 3) {
-    return name[0] + '*';
-  }
-  if (name.length <= 6) {
-    return name.slice(0, 2) + '*';
-  }
-  return name.slice(0, 3) + '*' + name.slice(-1);
-};
+    if (name.length <= 3) {
+      return name[0] + '*';
+    }
+    if (name.length <= 6) {
+      return name.slice(0, 2) + '*';
+    }
+    return name.slice(0, 3) + '*' + name.slice(-1);
+  }; // ← BŪTINAI TURI BŪTI ŠITA EILUTĖ
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+
       {/* Žetonų fonas */}
       <div className="jk-coins-background">
         <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
