@@ -123,9 +123,12 @@ export default function Leaderboard() {
         fontFamily: 'Arial'
       }}>
      <div className="w-full flex justify-center">
+  <div className="w-full flex justify-center">
   <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-orange-500 to-yellow-400 animate-pulse drop-shadow-[0_0_20px_red]">
     Johnny Knox Goated Monthly
   </h1>
+</div>
+
 
         <p style={{ 
           textAlign: 'center', 
