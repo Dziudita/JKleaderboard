@@ -1,3 +1,4 @@
+
 /* FONAS VISAM PUSLAPIUI */
 html, body {
   width: 100%;
@@ -114,7 +115,6 @@ html, body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  animation: pulseGlow 2.5s infinite ease-in-out;
   overflow: visible;
 }
 
@@ -173,76 +173,38 @@ body {
   overflow-x: hidden;
 }
 
-/* 🔥 LIEPSNOS TIK 3 VIETOMS */
+/* PNG liepsnos podiumui */
 .podium-card.gold::before {
   content: '';
   position: absolute;
-  top: -30px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
   height: 100px;
-  background: radial-gradient(circle, rgba(255,140,0,0.7) 0%, rgba(255,0,0,0) 70%);
-  border-radius: 50%;
-  animation: flameBurst 1.6s infinite ease-in-out;
-  z-index: 0;
+  background-image: url('/firstplace.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
   pointer-events: none;
 }
 
-.podium-card.silver::before {
-  content: '';
-  position: absolute;
-  top: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85px;
-  height: 85px;
-  background: radial-gradient(circle, rgba(192,192,192,0.6) 0%, rgba(255,0,0,0) 70%);
-  border-radius: 50%;
-  animation: flameBurst 2s infinite ease-in-out;
-  z-index: 0;
-  pointer-events: none;
-}
-
+.podium-card.silver::before,
 .podium-card.bronze::before {
   content: '';
   position: absolute;
-  top: -20px;
+  top: -45px;
   left: 50%;
   transform: translateX(-50%);
-  width: 75px;
-  height: 75px;
-  background: radial-gradient(circle, rgba(205,127,50,0.6) 0%, rgba(255,0,0,0) 70%);
-  border-radius: 50%;
-  animation: flameBurst 2.4s infinite ease-in-out;
-  z-index: 0;
+  width: 70px;
+  height: 70px;
+  background-image: url('/others.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 3;
   pointer-events: none;
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(255,215,0,0.5);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(255,255,255,0.7), 0 0 50px rgba(255,215,0,0.8);
-    transform: scale(1.02);
-  }
-}
-
-@keyframes flameBurst {
-  0% {
-    transform: translateX(-50%) scale(0.9);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translateX(-50%) scale(1.4);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateX(-50%) scale(0.9);
-    opacity: 0.5;
-  }
 }
 
 @media (max-width: 768px) {
