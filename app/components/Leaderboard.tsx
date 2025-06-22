@@ -134,7 +134,7 @@ export default function Leaderboard() {
               ✅ Minimum Wager Requirement: Players must wager at least $10,000
             </p>
 
-            <p style={{ textAlign: 'center', color: '#9eff3e', fontSize: '1.6rem', textTransform: 'uppercase', fontWeight: 'bold', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+            <p style={{ textAlign: 'center', color: '#ff2a2a', fontSize: '1.6rem', textTransform: 'uppercase', fontWeight: 'bold', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
               Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
             </p>
 
