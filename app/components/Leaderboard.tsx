@@ -98,7 +98,6 @@ export default function Leaderboard() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      {/* Žetonų fonas */}
       <div className="jk-coins-background">
         <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
         <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
@@ -107,28 +106,17 @@ export default function Leaderboard() {
         <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
       </div>
 
-      {/* Kauliukų fonas */}
       <div className="dice-background">
         <div className="dice dice-left" />
         <div className="dice dice-right" />
       </div>
 
-      {/* TURINYS */}
       <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
         <div className="w-full flex justify-center">
           <div>
-           <p style={{ 
-  textAlign: 'center', 
-  color: '#f7c000', 
-  fontSize: '2.5rem', 
-  fontWeight: 'bold', 
-  textTransform: 'uppercase', 
-  textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
-}}>
-  Johnny Knox Goated Monthly
-</p>
-
-
+            <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              Johnny Knox Goated Monthly
+            </p>
 
             <p style={{ textAlign: 'center', color: '#f7c000', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
               ✅ Minimum Wager Requirement: Players must wager at least $10,000
@@ -150,15 +138,12 @@ export default function Leaderboard() {
               This leaderboard refreshes automatically every 10–30 minutes.
             </p>
 
-            {/* TOP 3 */}
             <div className="podium">
               {users.slice(0, 3).map((user, index) => {
-                const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-                  ? (user.total / totalEligibleWager) * rewardPool * 0.6
-                  : 0;
+                const payout = user.total && rewardPool > 0 && totalEligibleWager > 0 ? (user.total / totalEligibleWager) * rewardPool * 0.6 : 0;
                 const classes = ['gold', 'silver', 'bronze'];
                 return (
-                  <div key={index} className={podium-card ${classes[index]}}>
+                  <div key={index} className={`podium-card ${classes[index]}`}>
                     <div className="username">{maskName(user.username)}</div>
                     <div className="info-section">
                       <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
@@ -169,7 +154,6 @@ export default function Leaderboard() {
               })}
             </div>
 
-            {/* TOP 4–10 */}
             <div style={{ overflowX: 'auto', marginTop: '40px' }}>
               <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
                 <thead>
@@ -183,9 +167,7 @@ export default function Leaderboard() {
                 <tbody>
                   {users.slice(3, 10).map((user, index) => {
                     const wager = user.total || 0;
-                    const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
-                      ? (wager / totalEligibleWager) * rewardPool * 0.6
-                      : 0;
+                    const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0 ? (wager / totalEligibleWager) * rewardPool * 0.6 : 0;
                     return (
                       <tr key={index}>
                         <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
