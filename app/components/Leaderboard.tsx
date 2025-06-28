@@ -94,7 +94,6 @@ export default function Leaderboard() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      {/* Žetonų fonas */}
       <div className="jk-coins-background">
         <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
         <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
@@ -103,22 +102,19 @@ export default function Leaderboard() {
         <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
       </div>
 
-      {/* Kauliukų fonas */}
       <div className="dice-background">
         <div className="dice dice-left" />
         <div className="dice dice-right" />
       </div>
 
-      {/* TURINYS */}
       <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
         <div className="w-full flex justify-center">
           <div>
-            {/* VISAS TAVO TURINYS IŠLIEKA ČIA... */}
+            {/* ... Visa tavo esama struktūra lieka nepaliesta ... */}
 
-            {/* Naujos dvi kortelės virš Gamble responsibly */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginTop: '40px' }}>
-              {/* Auksinė kortelė */}
-              <div style={{ width: '350px', padding: '20px', backgroundImage: "url('/card_gold_brown.png')", backgroundSize: 'cover', borderRadius: '20px' }}>
+            {/* Pridėtos kortelės PO Top 3 podium, bet PRIEŠ Top 4–10 lentelę */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', margin: '40px 0' }}>
+              <div style={{ width: '350px', padding: '20px', backgroundImage: "url('/card_gold_brown.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px' }}>
                 <h3 style={{ color: '#f7c000', textAlign: 'center' }}>Johnny Knox Goated Monthly</h3>
                 <p style={{ color: '#fff', textAlign: 'center' }}>✅ Minimum Wager: $10,000</p>
                 <p style={{ color: '#ff2a2a', textAlign: 'center', fontWeight: 'bold' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
@@ -127,8 +123,7 @@ export default function Leaderboard() {
                 <p style={{ color: '#aaa', textAlign: 'center', fontSize: '0.8rem' }}>Leaderboard paid in 24–48h</p>
               </div>
 
-              {/* Juoda kortelė su 4–10 vietų lentele */}
-              <div style={{ width: '600px', backgroundImage: "url('/card_black_marble.png')", backgroundSize: 'cover', borderRadius: '20px', padding: '20px' }}>
+              <div style={{ width: '600px', backgroundImage: "url('/card_black_marble.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px', padding: '20px' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
                   <thead>
                     <tr>
@@ -158,7 +153,7 @@ export default function Leaderboard() {
               </div>
             </div>
 
-            {/* TOLIAU TĘSIASI likęs turinys: Gamble responsibly ir kt. */}
+            {/* ... Tęsiamas likęs turinys ... */}
           </div>
         </div>
       </div>
