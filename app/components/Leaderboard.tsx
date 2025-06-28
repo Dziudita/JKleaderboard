@@ -87,18 +87,54 @@ export default function Leaderboard() {
   const rewardPool = getRewardPool(totalWager);
 
   const maskName = (name: string = '') => {
-    if (name.length <= 3) {
-      return name[0] + '*';
-    }
-    if (name.length <= 6) {
-      return name.slice(0, 2) + '*';
-    }
+    if (name.length <= 3) return name[0] + '*';
+    if (name.length <= 6) return name.slice(0, 2) + '*';
     return name.slice(0, 3) + '*' + name.slice(-1);
   };
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      {/* Čia bus pritaikytas naujas dizainas su kortelėmis */}
+    <div style={{ minHeight: '100vh', padding: '20px', background: '#000', color: '#fff' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
+        {/* Kortelė su statistika (auksinė) */}
+        <div style={{ width: '350px', height: 'auto', padding: '20px', backgroundImage: "url('/card_gold_brown.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px' }}>
+          <h2 style={{ color: '#f7c000', textAlign: 'center', fontSize: '1.5rem' }}>Johnny Knox Goated Monthly</h2>
+          <p style={{ color: '#fff', textAlign: 'center' }}>✅ Minimum Wager: $10,000</p>
+          <p style={{ color: '#ff2a2a', textAlign: 'center', fontWeight: 'bold' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
+          <p style={{ color: '#f7c000', textAlign: 'center' }}>Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+          <p style={{ color: '#fff', textAlign: 'center', fontSize: '1rem' }}>JOIN THE TEAM NOW</p>
+          <p style={{ color: '#aaa', textAlign: 'center', fontSize: '0.8rem' }}>Leaderboard paid within 24–48h</p>
+        </div>
+
+        {/* Kortelė su 4–10 vietomis (juoda) */}
+        <div style={{ width: '600px', backgroundImage: "url('/card_black_marble.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px', padding: '20px' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
+            <thead>
+              <tr>
+                <th style={{ padding: '10px', color: '#f7c000' }}>Place</th>
+                <th style={{ padding: '10px', color: '#f7c000' }}>User</th>
+                <th style={{ padding: '10px', color: '#f7c000' }}>Wager</th>
+                <th style={{ padding: '10px', color: '#f7c000' }}>Payout</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.slice(3, 10).map((user, index) => {
+                const wager = user.total || 0;
+                const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+                  ? (wager / totalEligibleWager) * rewardPool * 0.6
+                  : 0;
+                return (
+                  <tr key={index}>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
