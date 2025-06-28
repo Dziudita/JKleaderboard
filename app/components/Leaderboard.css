@@ -209,7 +209,7 @@ html, body {
   transform: translateX(-50%);
   width: 100px;
   height: 100px;
-  background-image: url('/particles.gif');
+  background-image: url('/particles.gif'); /* arba .webp/.png su sparks */
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 4;
@@ -236,6 +236,7 @@ html, body {
   animation: flameFlicker 2s infinite ease-in-out;
 }
 
+/* ŠVYTĖJIMO ANIMACIJOS */
 @keyframes glowGold {
   from { box-shadow: 0 0 10px 4px rgba(255, 140, 0, 0.4); }
   to   { box-shadow: 0 0 30px 12px rgba(255, 140, 0, 0.8); }
@@ -312,69 +313,5 @@ html, body {
 
   .jk-coin {
     background-size: 80%;
-  }
-}
-
-/* KORTELIŲ BLOKAS PO PODIUMU */
-.info-cards-section {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-top: 60px;
-  flex-wrap: wrap;
-  z-index: 2;
-  position: relative;
-}
-
-.info-card {
-  background-size: cover;
-  background-repeat: no-repeat;
-  border-radius: 20px;
-  padding: 30px;
-  color: white;
-  box-shadow: 0 0 12px gold;
-  min-height: 300px;
-  font-size: 1rem;
-}
-
-.info-card.gold-bg {
-  background-image: url('/card_gold_brown.png');
-  width: 420px;
-}
-
-.info-card.black-bg {
-  background-image: url('/card_black_marble.png');
-  color: #fff;
-  width: 540px;
-}
-
-.info-card table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.info-card table th,
-.info-card table td {
-  padding: 6px;
-  text-align: left;
-  color: #f7c000;
-}
-
-.info-card table td {
-  color: white;
-  text-align: right;
-}
-
-@media (max-width: 768px) {
-  .info-cards-section {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 20px;
-  }
-
-  .info-card {
-    width: 90%;
-    padding: 20px;
   }
 }
