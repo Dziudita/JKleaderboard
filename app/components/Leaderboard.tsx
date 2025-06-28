@@ -145,7 +145,7 @@ export default function Leaderboard() {
   {/* AUKSINĖ KORTELĖ */}
   <div
     style={{
-      backgroundImage: 'url("/gold-marble.png")',
+      backgroundImage: 'url("/card_gold_brown.png")',
       backgroundSize: 'cover',
       borderRadius: '20px',
       padding: '30px',
@@ -184,7 +184,7 @@ export default function Leaderboard() {
   {/* JUODA KORTELĖ SU 4–10 VIETOMIS */}
   <div
     style={{
-      backgroundImage: 'url("/black-marble.png")',
+      backgroundImage: 'url("/card_black_marble.png")',
       backgroundSize: 'cover',
       borderRadius: '20px',
       padding: '20px',
