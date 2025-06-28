@@ -98,6 +98,7 @@ export default function Leaderboard() {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+      {/* Žetonų fonas */}
       <div className="jk-coins-background">
         <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
         <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
@@ -105,53 +106,108 @@ export default function Leaderboard() {
         <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
         <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
       </div>
+
+      {/* Kauliukų fonas */}
       <div className="dice-background">
         <div className="dice dice-left" />
         <div className="dice dice-right" />
       </div>
+
+      {/* TURINYS */}
       <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
         <div className="w-full flex justify-center">
           <div>
-            <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>Johnny Knox Goated Monthly</p>
-            <div className="flex flex-col lg:flex-row justify-center items-start gap-8 mt-12 px-4 max-w-screen-xl mx-auto">
-              <div style={{ flex: '1', background: 'rgba(0, 0, 0, 0.5)', borderRadius: '20px', padding: '20px', color: '#fff', boxShadow: '0 0 12px gold', backdropFilter: 'blur(10px)', minWidth: '300px' }}>
-                <p style={{ fontSize: '1.3rem', marginBottom: '10px' }}>✅ <strong>Minimum Wager:</strong> $10,000</p>
-                <p style={{ color: '#ff4444', fontWeight: 'bold', fontSize: '1.1rem' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
-                <p style={{ color: '#f7c000', fontWeight: 'bold', fontSize: '1.1rem', margin: '10px 0' }}>Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</p>
-                <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontWeight: 'bold', textDecoration: 'underline', display: 'block', marginTop: '12px' }}>JOIN THE TEAM NOW</a>
-                <p style={{ fontSize: '0.85rem', marginTop: '10px', color: '#ccc' }}>Leaderboard paid in 24–48h</p>
-              </div>
-              <div style={{ flex: '2', background: 'rgba(0, 0, 0, 0.4)', borderRadius: '20px', padding: '20px', boxShadow: '0 0 12px #f7c000', backdropFilter: 'blur(8px)' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <thead>
-                    <tr>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {users.slice(3, 10).map((user, index) => {
-                      const wager = user.total || 0;
-                      const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
-                        ? (wager / totalEligibleWager) * rewardPool * 0.6
-                        : 0;
-                      return (
-                        <tr key={index}>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+           <p style={{ 
+  textAlign: 'center', 
+  color: '#f7c000', 
+  fontSize: '2.5rem', 
+  fontWeight: 'bold', 
+  textTransform: 'uppercase', 
+  textShadow: '2px 2px 6px rgba(0,0,0,0.8)' 
+}}>
+  Johnny Knox Goated Monthly
+</p>
+
+
+
+            <p style={{ textAlign: 'center', color: '#f7c000', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              ✅ Minimum Wager Requirement: Players must wager at least $10,000
+            </p>
+
+            <p style={{ textAlign: 'center', color: '#ff2a2a', fontSize: '1.6rem', textTransform: 'uppercase', fontWeight: 'bold', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              Ends in: {days}D {hours}H {minutes}M {seconds}S (UTC)
+            </p>
+
+            <p style={{ textAlign: 'center', color: '#f7c000', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+            </p>
+
+            <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '1.2rem', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              If you want to be a part of the action, <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a>!
+            </p>
+
+            <p style={{ textAlign: 'center', color: '#aaa', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
+              This leaderboard refreshes automatically every 10–30 minutes.
+            </p>
+
+            {/* TOP 3 */}
+            <div className="podium">
+              {users.slice(0, 3).map((user, index) => {
+                const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
+                  ? (user.total / totalEligibleWager) * rewardPool * 0.6
+                  : 0;
+                const classes = ['gold', 'silver', 'bronze'];
+                return (
+                  <div key={index} className={podium-card ${classes[index]}}>
+                    <div className="username">{maskName(user.username)}</div>
+                    <div className="info-section">
+                      <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
+                      <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>Leaderboard will be paid out within 24 - 48 hours.</p>
-            <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>⚠ Gamble Responsibly<br /><span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.</span></p>
+
+            {/* TOP 4–10 */}
+            <div style={{ overflowX: 'auto', marginTop: '40px' }}>
+              <table style={{ width: '100%', maxWidth: '1000px', margin: '0 auto', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr>
+                    <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
+                    <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
+                    <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
+                    <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.slice(3, 10).map((user, index) => {
+                    const wager = user.total || 0;
+                    const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+                      ? (wager / totalEligibleWager) * rewardPool * 0.6
+                      : 0;
+                    return (
+                      <tr key={index}>
+                        <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
+                        <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                        <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+              Leaderboard will be paid out within 24 - 48 hours.
+            </p>
+            <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+              ⚠ Gamble Responsibly<br />
+              <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
+                Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
+              </span>
+            </p>
           </div>
         </div>
       </div>
