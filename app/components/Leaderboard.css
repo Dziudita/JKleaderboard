@@ -319,8 +319,8 @@ html, body {
 .info-cards-section {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
+  gap: 60px;
+  margin-top: 60px;
   flex-wrap: wrap;
   z-index: 2;
   position: relative;
@@ -333,16 +333,19 @@ html, body {
   padding: 30px;
   color: white;
   box-shadow: 0 0 12px gold;
-  max-width: 360px;
+  min-height: 300px;
+  font-size: 1rem;
 }
 
 .info-card.gold-bg {
-  background-image: url('/gold-marble.png');
+  background-image: url('/card_gold_brown.png');
+  width: 420px;
 }
 
 .info-card.black-bg {
-  background-image: url('/black-marble.png');
+  background-image: url('/card_black_marble.png');
   color: #fff;
+  width: 540px;
 }
 
 .info-card table {
@@ -359,6 +362,7 @@ html, body {
 
 .info-card table td {
   color: white;
+  text-align: right;
 }
 
 @media (max-width: 768px) {
