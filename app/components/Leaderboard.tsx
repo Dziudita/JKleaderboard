@@ -93,46 +93,73 @@ export default function Leaderboard() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', padding: '20px', background: '#000', color: '#fff' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-        {/* Kortelė su statistika (auksinė) */}
-        <div style={{ width: '350px', height: 'auto', padding: '20px', backgroundImage: "url('/card_gold_brown.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px' }}>
-          <h2 style={{ color: '#f7c000', textAlign: 'center', fontSize: '1.5rem' }}>Johnny Knox Goated Monthly</h2>
-          <p style={{ color: '#fff', textAlign: 'center' }}>✅ Minimum Wager: $10,000</p>
-          <p style={{ color: '#ff2a2a', textAlign: 'center', fontWeight: 'bold' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
-          <p style={{ color: '#f7c000', textAlign: 'center' }}>Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-          <p style={{ color: '#fff', textAlign: 'center', fontSize: '1rem' }}>JOIN THE TEAM NOW</p>
-          <p style={{ color: '#aaa', textAlign: 'center', fontSize: '0.8rem' }}>Leaderboard paid within 24–48h</p>
-        </div>
+    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
+      {/* Žetonų fonas */}
+      <div className="jk-coins-background">
+        <div className="jk-coin" style={{ top: '10%', left: '20%', width: '60px', height: '60px', animationDuration: '25s' }} />
+        <div className="jk-coin" style={{ top: '30%', left: '70%', width: '40px', height: '40px', animationDuration: '30s' }} />
+        <div className="jk-coin" style={{ top: '50%', left: '40%', width: '80px', height: '80px', animationDuration: '20s' }} />
+        <div className="jk-coin" style={{ top: '70%', left: '10%', width: '50px', height: '50px', animationDuration: '35s' }} />
+        <div className="jk-coin" style={{ top: '80%', left: '80%', width: '70px', height: '70px', animationDuration: '18s' }} />
+      </div>
 
-        {/* Kortelė su 4–10 vietomis (juoda) */}
-        <div style={{ width: '600px', backgroundImage: "url('/card_black_marble.png')", backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '20px', padding: '20px' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
-            <thead>
-              <tr>
-                <th style={{ padding: '10px', color: '#f7c000' }}>Place</th>
-                <th style={{ padding: '10px', color: '#f7c000' }}>User</th>
-                <th style={{ padding: '10px', color: '#f7c000' }}>Wager</th>
-                <th style={{ padding: '10px', color: '#f7c000' }}>Payout</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.slice(3, 10).map((user, index) => {
-                const wager = user.total || 0;
-                const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
-                  ? (wager / totalEligibleWager) * rewardPool * 0.6
-                  : 0;
-                return (
-                  <tr key={index}>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                    <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+      {/* Kauliukų fonas */}
+      <div className="dice-background">
+        <div className="dice dice-left" />
+        <div className="dice dice-right" />
+      </div>
+
+      {/* TURINYS */}
+      <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
+        <div className="w-full flex justify-center">
+          <div>
+            {/* VISAS TAVO TURINYS IŠLIEKA ČIA... */}
+
+            {/* Naujos dvi kortelės virš Gamble responsibly */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap', marginTop: '40px' }}>
+              {/* Auksinė kortelė */}
+              <div style={{ width: '350px', padding: '20px', backgroundImage: "url('/card_gold_brown.png')", backgroundSize: 'cover', borderRadius: '20px' }}>
+                <h3 style={{ color: '#f7c000', textAlign: 'center' }}>Johnny Knox Goated Monthly</h3>
+                <p style={{ color: '#fff', textAlign: 'center' }}>✅ Minimum Wager: $10,000</p>
+                <p style={{ color: '#ff2a2a', textAlign: 'center', fontWeight: 'bold' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
+                <p style={{ color: '#f7c000', textAlign: 'center' }}>Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+                <p style={{ color: '#fff', textAlign: 'center', fontSize: '1rem' }}>JOIN THE TEAM NOW</p>
+                <p style={{ color: '#aaa', textAlign: 'center', fontSize: '0.8rem' }}>Leaderboard paid in 24–48h</p>
+              </div>
+
+              {/* Juoda kortelė su 4–10 vietų lentele */}
+              <div style={{ width: '600px', backgroundImage: "url('/card_black_marble.png')", backgroundSize: 'cover', borderRadius: '20px', padding: '20px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
+                  <thead>
+                    <tr>
+                      <th style={{ padding: '10px', color: '#f7c000' }}>Place</th>
+                      <th style={{ padding: '10px', color: '#f7c000' }}>User</th>
+                      <th style={{ padding: '10px', color: '#f7c000' }}>Wager</th>
+                      <th style={{ padding: '10px', color: '#f7c000' }}>Payout</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.slice(3, 10).map((user, index) => {
+                      const wager = user.total || 0;
+                      const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0
+                        ? (wager / totalEligibleWager) * rewardPool * 0.6
+                        : 0;
+                      return (
+                        <tr key={index}>
+                          <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
+                          <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
+                          <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                          <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* TOLIAU TĘSIASI likęs turinys: Gamble responsibly ir kt. */}
+          </div>
         </div>
       </div>
     </div>
