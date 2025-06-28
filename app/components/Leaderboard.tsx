@@ -141,24 +141,65 @@ export default function Leaderboard() {
             </div>
 
             {/* EXTRA CARDS UNDER TOP 3 */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '40px', flexWrap: 'wrap' }}>
-              <div style={{ backgroundImage: 'url("/gold-marble.png")', backgroundSize: 'cover', borderRadius: '20px', padding: '30px', width: '330px', color: 'white', boxShadow: '0 0 12px gold' }}>
-                <p style={{ fontSize: '1.2rem' }}>✅ Minimum Wager: $10,000</p>
-                <p style={{ color: '#ff4444', fontWeight: 'bold' }}>Ends in: {days}D {hours}H {minutes}M {seconds}S</p>
-                <p style={{ color: '#f7c000' }}>Total Wagered: ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 3 })}</p>
-                <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontWeight: 'bold', textDecoration: 'underline', display: 'block', marginTop: '10px' }}>JOIN THE TEAM NOW</a>
-                <p style={{ fontSize: '0.8rem', marginTop: '10px', color: '#ddd' }}>Leaderboard paid in 24–48h</p>
-              </div>
+           <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '40px', flexWrap: 'wrap' }}>
+  {/* AUKSINĖ KORTELĖ */}
+  <div
+    style={{
+      backgroundImage: 'url("/gold-marble.png")',
+      backgroundSize: 'cover',
+      borderRadius: '20px',
+      padding: '30px',
+      width: '330px',
+      color: 'white',
+      boxShadow: '0 0 12px gold',
+    }}
+  >
+    <p style={{ fontSize: '1.2rem' }}>✅ Minimum Wager: $10,000</p>
+    <p style={{ color: '#ff4444', fontWeight: 'bold' }}>
+      Ends in: {days}D {hours}H {minutes}M {seconds}S
+    </p>
+    <p style={{ color: '#f7c000' }}>
+      Total Wagered: $
+      {totalWager.toLocaleString(undefined, { minimumFractionDigits: 3 })}
+    </p>
+    <a
+      href="https://www.goated.com/r/JOHNNYKNOX"
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        color: 'white',
+        fontWeight: 'bold',
+        textDecoration: 'underline',
+        display: 'block',
+        marginTop: '10px',
+      }}
+    >
+      JOIN THE TEAM NOW
+    </a>
+    <p style={{ fontSize: '0.8rem', marginTop: '10px', color: '#ddd' }}>
+      Leaderboard paid in 24–48h
+    </p>
+  </div>
 
-              <div style={{ backgroundImage: 'url("/black-marble.png")', backgroundSize: 'cover', borderRadius: '20px', padding: '20px', width: '400px', color: '#fff' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <thead>
-                    <tr>
-                      <th style={{ color: '#f7c000', textAlign: 'left', padding: '6px' }}>Place</th>
-                      <th style={{ color: '#f7c000', textAlign: 'left', padding: '6px' }}>User</th>
-                      <th style={{ color: '#f7c000', textAlign: 'right', padding: '6px' }}>Wager</th>
-                      <th style={{ color: '#f7c000', textAlign: 'right', padding: '6px' }}>Payout</th>
-                    </tr>
+  {/* JUODA KORTELĖ SU 4–10 VIETOMIS */}
+  <div
+    style={{
+      backgroundImage: 'url("/black-marble.png")',
+      backgroundSize: 'cover',
+      borderRadius: '20px',
+      padding: '20px',
+      width: '400px',
+      color: '#fff',
+    }}
+  >
+    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+      <thead>
+        <tr>
+          <th style={{ color: '#f7c000', textAlign: 'left', padding: '6px' }}>Place</th>
+          <th style={{ color: '#f7c000', textAlign: 'left', padding: '6px' }}>User</th>
+          <th style={{ color: '#f7c000', textAlign: 'right', padding: '6px' }}>Wager</th>
+          <th style={{ color: '#f7c000', textAlign: 'right', padding: '6px' }}>Payout</th>
+        </tr>
                   </thead>
                   <tbody>
                     {users.slice(3, 10).map((user, index) => {
