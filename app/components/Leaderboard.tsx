@@ -165,16 +165,17 @@ export default function Leaderboard() {
                 </table>
               </div>
 
-              <div style={{
-                width: '480px',
-                background: 'linear-gradient(to bottom, #222, #000)',
-                border: '2px solid #f7c000',
-                borderRadius: '12px',
-                padding: '20px',
-                color: '#f7c000',
-                boxShadow: '0 0 20px rgba(255,215,0,0.3)'
-       marginTop: '40px'
-              }}>
+            <div style={{
+  width: '480px',
+  background: 'linear-gradient(to bottom, #222, #000)',
+  border: '2px solid #f7c000',
+  borderRadius: '12px',
+  padding: '20px',
+  color: '#f7c000',
+  boxShadow: '0 0 20px rgba(255,215,0,0.3)',
+  marginTop: '40px' // <--- ŠITAS EILUTĖ!
+}}>
+
                 <ul style={{ listStyle: 'disc', paddingLeft: '20px', fontSize: '1rem', lineHeight: '1.7' }}>
                   <li><strong>Minimum Wager Requirement:</strong> Players must wager at least $10,000</li>
                   <li style={{ color: '#ff2a2a' }}><strong>ENDS IN:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</li>
