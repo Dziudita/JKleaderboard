@@ -5,11 +5,6 @@ import './Leaderboard.css';
 
 const REFRESH_INTERVAL = 30 * 60 * 1000;
 
-type User = {
-  username?: string;
-  total?: number;
-};
-
 const rewardTiers = [
   { threshold: 5000000, pool: 11400 },
   { threshold: 4500000, pool: 10260 },
@@ -31,7 +26,7 @@ const rewardTiers = [
   { threshold: 50000, pool: 114.4 },
 ];
 
-function getRewardPool(totalWager: number) {
+function getRewardPool(totalWager) {
   for (const tier of rewardTiers) {
     if (totalWager >= tier.threshold) {
       return tier.pool;
@@ -68,7 +63,7 @@ function useCountdownToEndOfMonthUTC() {
 }
 
 export default function Leaderboard() {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState([]);
   const { days, hours, minutes, seconds } = useCountdownToEndOfMonthUTC();
 
   useEffect(() => {
@@ -86,138 +81,86 @@ export default function Leaderboard() {
   const totalEligibleWager = eligibleUsers.reduce((sum, u) => sum + (u.total || 0), 0);
   const rewardPool = getRewardPool(totalWager);
 
-  const maskName = (name: string = '') => {
+  const maskName = (name = '') => {
     if (name.length <= 3) return name[0] + '*';
     if (name.length <= 6) return name.slice(0, 2) + '*';
     return name.slice(0, 3) + '*' + name.slice(-1);
   };
 
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden' }}>
-      <div className="jk-coins-background">
-        {/* Floating coins */}
-      </div>
-
+    <div className="leaderboard-wrapper">
+      <div className="jk-coins-background" />
       <div className="dice-background">
         <div className="dice dice-left" />
         <div className="dice dice-right" />
       </div>
 
-      <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
-        <div className="w-full flex justify-center">
-          <div>
-           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-  <h1 style={{
-    color: '#f7c000',
-    fontSize: '2.5rem',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
-    margin: 0,
-    letterSpacing: '1px',
-  }}>
-    JOHNNYKNOX
-  </h1>
-  <h2 style={{
-    color: '#f7c000',
-    fontSize: '1.8rem',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    textShadow: '0 0 8px #f7c000, 0 0 12px #ff9900',
-    animation: 'pulseGlow 2s ease-in-out infinite',
-    marginTop: '2px',
-    letterSpacing: '2px'
-  }}>
-    GOATED MONTHLY
-  </h2>
-</div>
+      <div className="leaderboard-container">
+        <div className="header">
+          <h1 className="title">JOHNNYKNOX</h1>
+          <h2 className="subtitle">GOATED MONTHLY</h2>
+        </div>
 
-<style jsx>{`
-  @keyframes pulseGlow {
-    0% {
-      text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
-    }
-    50% {
-      text-shadow: 0 0 16px #fff700, 0 0 24px #ff6600;
-    }
-    100% {
-      text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
-    }
-  }
-`}</style>
+        <div className="podium">
+          {users.slice(0, 3).map((user, index) => {
+            const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
+              ? (user.total / totalEligibleWager) * rewardPool * 0.6
+              : 0;
+            const classes = ['gold', 'silver', 'bronze'];
+            return (
+              <div key={index} className={`podium-card ${classes[index]}`}>
+                <div className="username">{maskName(user.username)}</div>
+                <div className="info-section">
+                  <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
+                  <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
 
-
-       <div className="podium" style={{ marginTop: '60px' }}>
-  {users.slice(0, 3).map((user, index) => {
-    const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-      ? (user.total / totalEligibleWager) * rewardPool * 0.6
-      : 0;
-    const classes = ['gold', 'silver', 'bronze'];
-    return (
-      <div key={index} className={`podium-card ${classes[index]}`}>
-        <div className="username">{maskName(user.username)}</div>
-        <div className="info-section">
-          <div className="wager">
-            Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
-          </div>
-          <div className="payout">
-            Payout: <strong>${payout.toFixed(2)}</strong>
-          </div>
-                  </div>
-</div>
-                );
-              })}
-            </div>
-
-            {/* Flex layout: table (left) + info box (right) */}
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', flexWrap: 'wrap' }}>
-              <div style={{ width: '480px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
-                  <thead>
-                    <tr>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Place</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>User</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Wager</th>
-                      <th style={{ borderBottom: '2px solid #f7c000', padding: '10px', color: '#f7c000' }}>Payout</th>
+        <div className="data-section">
+          <div className="leaderboard-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Place</th>
+                  <th>User</th>
+                  <th>Wager</th>
+                  <th>Payout</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.slice(3, 10).map((user, index) => {
+                  const wager = user.total || 0;
+                  const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0 ? (wager / totalEligibleWager) * rewardPool * 0.6 : 0;
+                  return (
+                    <tr key={index}>
+                      <td>{index + 4}.</td>
+                      <td>{maskName(user.username)}</td>
+                      <td>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
+                      <td>${payout.toFixed(2)}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {users.slice(3, 10).map((user, index) => {
-                      const wager = user.total || 0;
-                      const payout = wager >= 10000 && rewardPool > 0 && totalEligibleWager > 0 ? (wager / totalEligibleWager) * rewardPool * 0.6 : 0;
-                      return (
-                        <tr key={index}>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>{index + 4}.</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>{maskName(user.username)}</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>${wager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
-                          <td style={{ textAlign: 'center', padding: '10px' }}>${payout.toFixed(2)}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
 
-              <div style={{ width: '480px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
-                <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
-                <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
-                <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-                <p style={{ marginTop: '10px' }}>📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a></p>
-                <p style={{ color: '#aaa', marginTop: '10px' }}>⟳ Leaderboard refreshes every 10–30 minutes</p>
-              </div>
-            </div>
-
-            <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-              Leaderboard will be paid out within 24 - 48 hours.
-            </p>
-            <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-              ⚠ Gamble Responsibly<br />
-              <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-                Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer" style={{ color: '#f7c000', textDecoration: 'underline' }}>BeGambleAware.org</a>.
-              </span>
-            </p>
+          <div className="info-box">
+            <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
+            <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
+            <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+            <p className="join-now">📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer">JOIN THE TEAM NOW</a></p>
+            <p className="refresh-note">⟳ Leaderboard refreshes every time you reload the page.</p>
           </div>
         </div>
+
+        <p className="payout-info">Leaderboard will be paid out within 24 - 48 hours.</p>
+        <p className="responsible-gaming">
+          ⚠ Gamble Responsibly<br />
+          Gambling involves risk — play responsibly. Need help? Visit <a href="https://www.begambleaware.org/" target="_blank" rel="noopener noreferrer">BeGambleAware.org</a>.
+        </p>
       </div>
     </div>
   );
