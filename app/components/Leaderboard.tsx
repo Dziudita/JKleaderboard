@@ -136,7 +136,7 @@ export default function Leaderboard() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
-              <div style={{ width: '480px', marginTop: '50px', marginBottom: '20px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
+              <div style={{ width: '480px', marginTop: '60px', marginBottom: '20px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
                   <thead>
                     <tr>
@@ -173,7 +173,7 @@ export default function Leaderboard() {
   padding: '20px',
   color: '#f7c000',
   boxShadow: '0 0 20px rgba(255,215,0,0.3)',
-  marginTop: '40px' // <--- ŠITAS EILUTĖ!
+  marginTop: '60px' // <--- ŠITAS EILUTĖ!
 }}>
 
                 <ul style={{ listStyle: 'disc', paddingLeft: '20px', fontSize: '1rem', lineHeight: '1.7' }}>
