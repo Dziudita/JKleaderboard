@@ -88,12 +88,12 @@ html, body {
   justify-content: center;
   align-items: flex-end;
   gap: 30px;
-  margin-top: 60px;
   position: relative;
   z-index: 2;
   background: none;
   max-width: 100%;
   overflow: visible;
+  top: 40px;
 }
 
 /* BENDRI PODIUMO BLOKAI */
@@ -209,7 +209,7 @@ html, body {
   transform: translateX(-50%);
   width: 100px;
   height: 100px;
-  background-image: url('/particles.gif'); /* arba .webp/.png su sparks */
+  background-image: url('/particles.gif');
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 4;
@@ -278,7 +278,7 @@ html, body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-top: 30px;
+    top: 20px;
   }
 
   .podium-card {
