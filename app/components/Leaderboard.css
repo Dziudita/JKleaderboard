@@ -261,8 +261,9 @@ html, body {
   margin-top: 40px;
 }
 
-.leaderboard-table {
-  margin-bottom: 20px;
+.leaderboard-table,
+.info-box {
+  margin-bottom: 40px;
 }
 
 @media (max-width: 768px) {
@@ -328,5 +329,11 @@ html, body {
 
   .jk-coin {
     background-size: 80%;
+  }
+
+  .leaderboard-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
   }
 }
