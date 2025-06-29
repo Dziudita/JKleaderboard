@@ -144,9 +144,7 @@ export default function Leaderboard() {
                 const classes = ['gold', 'silver', 'bronze'];
                 return (
                   <div key={index} className={`podium-card ${classes[index]}`}>
-                   <div className="username">
-  {index === 0 ? maskName(user.username) : '***'}
-</div>
+                  <div className="username">{maskName(user.username)}</div>
                     <div className="info-section">
                       <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></div>
                       <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
