@@ -160,24 +160,41 @@ export default function Leaderboard() {
                 </table>
               </div>
 
-              <div style={{ width: '480px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
-                <p><strong>✅ Minimum Wager Requirement:</strong> Players must wager at least $10,000</p>
-                <p><strong>⏳ ENDS IN:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
-                <p><strong>🔥 Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-                <p style={{ marginTop: '10px' }}>
-                  <span>If you want to be a part of the action, </span>
-                  <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline' }}>
-                    JOIN THE TEAM NOW!
-                  </a>
-                </p>
-                <p style={{ color: '#aaa', marginTop: '10px' }}>
-                  🕒 Leaderboard refreshes every time the page is reloaded, or at most every 10 minutes.
-                </p>
-                <p style={{ color: '#f7c000', marginTop: '20px', fontWeight: 'bold' }}>
-                  Leaderboard will be paid out within 24 - 48 hours.
-                </p>
-              </div>
-            </div>
+            <div style={{
+  width: '480px',
+  background: 'linear-gradient(to bottom, #222, #000)',
+  border: '2px solid #f7c000',
+  borderRadius: '12px',
+  padding: '20px',
+  color: '#f7c000',
+  boxShadow: '0 0 20px rgba(255,215,0,0.3)'
+}}>
+  <ul style={{ listStyle: 'disc', paddingLeft: '20px', color: '#f7c000', fontSize: '1rem', lineHeight: '1.7' }}>
+    <li>
+      <strong>Minimum Wager Requirement:</strong> Players must wager at least $10,000
+    </li>
+    <li style={{ color: '#ff2a2a' }}>
+      <strong>ENDS IN:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)
+    </li>
+    <li>
+      <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+    </li>
+    <li>
+      If you want to be a part of the action,&nbsp;
+      <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer"
+         style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline' }}>
+        JOIN THE TEAM NOW!
+      </a>
+    </li>
+    <li style={{ color: '#ccc' }}>
+      Leaderboard refreshes every time the page is reloaded, or at most every 10 minutes.
+    </li>
+    <li style={{ fontWeight: 'bold' }}>
+      Leaderboard will be paid out within 24 - 48 hours.
+    </li>
+  </ul>
+</div>
+
 
             <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
               ⚠ Gamble Responsibly<br />
