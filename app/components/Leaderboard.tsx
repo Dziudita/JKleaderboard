@@ -106,9 +106,44 @@ export default function Leaderboard() {
       <div style={{ position: 'relative', zIndex: 1, padding: '20px', color: '#fff', fontFamily: 'Arial' }}>
         <div className="w-full flex justify-center">
           <div>
-            <p style={{ textAlign: 'center', color: '#f7c000', fontSize: '2.5rem', fontWeight: 'bold', textTransform: 'uppercase', textShadow: '2px 2px 6px rgba(0,0,0,0.8)' }}>
-              Johnny Knox Goated Monthly
-            </p>
+           <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+  <h1 style={{
+    color: '#f7c000',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+    margin: 0,
+    letterSpacing: '1px',
+  }}>
+    JOHNNYKNOX
+  </h1>
+  <h2 style={{
+    color: '#f7c000',
+    fontSize: '1.8rem',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    textShadow: '0 0 8px #f7c000, 0 0 12px #ff9900',
+    animation: 'pulseGlow 2s ease-in-out infinite',
+    marginTop: '2px',
+    letterSpacing: '2px'
+  }}>
+    GOATED MONTHLY
+  </h2>
+</div>
+
+<style jsx>{`
+  @keyframes pulseGlow {
+    0% {
+      text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
+    }
+    50% {
+      text-shadow: 0 0 16px #fff700, 0 0 24px #ff6600;
+    }
+    100% {
+      text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
+    }
+
 
             <div className="podium">
               {users.slice(0, 3).map((user, index) => {
