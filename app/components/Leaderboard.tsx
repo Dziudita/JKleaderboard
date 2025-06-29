@@ -26,7 +26,7 @@ const rewardTiers = [
   { threshold: 50000, pool: 114.4 },
 ];
 
-function getRewardPool(totalWager) {
+function getRewardPool(totalWager: number) {
   for (const tier of rewardTiers) {
     if (totalWager >= tier.threshold) {
       return tier.pool;
