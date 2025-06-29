@@ -143,6 +143,8 @@ export default function Leaderboard() {
     100% {
       text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
     }
+  }
+`}</style>
 
 
             <div className="podium">
