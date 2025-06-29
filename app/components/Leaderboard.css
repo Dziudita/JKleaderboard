@@ -12,6 +12,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: fixed;
+  font-family: 'Orbitron', sans-serif;
 }
 
 /* ZETONŲ ANIMUOTAS FONAS */
@@ -36,6 +37,11 @@ html, body {
   filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* KAULIUKŲ FONAS */
 .dice-background {
   position: fixed;
@@ -57,6 +63,12 @@ html, body {
   filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
 }
 
+@keyframes floatDice {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
 .dice-left {
   top: 25%;
   left: 2%;
@@ -71,17 +83,6 @@ html, body {
   height: 180px;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes floatDice {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(10deg); }
-  100% { transform: translateY(0) rotate(0deg); }
-}
-
 /* PODIUMO KONTEINERIS */
 .podium {
   display: flex;
@@ -94,6 +95,7 @@ html, body {
   max-width: 100%;
   overflow: visible;
   top: 40px;
+  margin-bottom: 40px;
 }
 
 /* BENDRI PODIUMO BLOKAI */
@@ -146,7 +148,7 @@ html, body {
 /* AUKSINIS */
 .podium-card.gold {
   background-image: url('/gold-card.png');
-  transform: translateY(30px);
+  transform: translateY(40px);
   order: 2;
   box-shadow: 0 0 25px 10px rgba(255, 140, 0, 0.6);
   animation: glowGold 3s infinite alternate;
@@ -236,7 +238,6 @@ html, body {
   animation: flameFlicker 2s infinite ease-in-out;
 }
 
-/* ŠVYTĖJIMO ANIMACIJOS */
 @keyframes glowGold {
   from { box-shadow: 0 0 10px 4px rgba(255, 140, 0, 0.4); }
   to   { box-shadow: 0 0 30px 12px rgba(255, 140, 0, 0.8); }
@@ -250,12 +251,6 @@ html, body {
   to   { box-shadow: 0 0 25px 10px rgba(205, 133, 63, 0.7); }
 }
 
-/* TARPAS PO PODIUMU */
-.margin-below-podium {
-  margin-top: 120px;
-}
-
-/* MOBILUS ATVAIZDAVIMAS */
 @media (max-width: 768px) {
   html, body {
     background-size: cover;
@@ -284,6 +279,7 @@ html, body {
     align-items: center;
     gap: 20px;
     top: 20px;
+    margin-bottom: 30px;
   }
 
   .podium-card {
