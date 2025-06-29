@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react';
 import './Leaderboard.css';
 
+// Apibrėžiam vartotojo tipą
+type User = {
+  username: string;
+  total: number;
+};
+
 const REFRESH_INTERVAL = 30 * 60 * 1000;
 
 const rewardTiers = [
@@ -26,12 +32,7 @@ const rewardTiers = [
   { threshold: 50000, pool: 114.4 },
 ];
 
-type User = {
-  username?: string;
-  total?: number;
-};
-
-function getRewardPool(totalWager: number) {
+function getRewardPool(totalWager: number): number {
   for (const tier of rewardTiers) {
     if (totalWager >= tier.threshold) {
       return tier.pool;
@@ -73,10 +74,7 @@ export default function Leaderboard() {
 
   useEffect(() => {
     fetch('/api/leaderboard')
-      .then((res) => {
-        if (!res.ok) throw new Error('API error');
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => setUsers(data || []))
       .catch(() => setUsers([]));
   }, []);
@@ -124,14 +122,6 @@ export default function Leaderboard() {
           })}
         </div>
 
-        <div className="info-box under-podium">
-          <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
-          <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
-          <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-          <p className="join-now">📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer">JOIN THE TEAM NOW</a></p>
-          <p className="refresh-note">⟳ Leaderboard refreshes every time you reload the page.</p>
-        </div>
-
         <div className="data-section">
           <div className="leaderboard-table">
             <table>
@@ -158,6 +148,14 @@ export default function Leaderboard() {
                 })}
               </tbody>
             </table>
+          </div>
+
+          <div className="info-box">
+            <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
+            <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
+            <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+            <p className="join-now">📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer">JOIN THE TEAM NOW</a></p>
+            <p className="refresh-note">⟳ Leaderboard refreshes every time you reload the page.</p>
           </div>
         </div>
 
