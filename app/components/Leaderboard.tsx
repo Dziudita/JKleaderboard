@@ -151,15 +151,15 @@ export default function Leaderboard() {
               {users.slice(0, 3).map((user, index) => {
                 const payout = user.total && rewardPool > 0 && totalEligibleWager > 0 ? (user.total / totalEligibleWager) * rewardPool * 0.6 : 0;
                 const classes = ['gold', 'silver', 'bronze'];
-                return (
-                  <div key={index} className={podium-card ${classes[index]}}>
-                    <div className="username">{maskName(user.username)}</div>
-                    <div className="info-section">
-                      <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
-                      <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
-                    </div>
-                  </div>
-                );
+              return (
+  <div key={index} className={`podium-card ${classes[index]}`}>
+    <div className="username">{maskName(user.username)}</div>
+    <div className="info-section">
+      <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
+      <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+    </div>
+  </div>
+);
               })}
             </div>
 
