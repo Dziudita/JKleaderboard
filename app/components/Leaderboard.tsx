@@ -26,6 +26,11 @@ const rewardTiers = [
   { threshold: 50000, pool: 114.4 },
 ];
 
+type User = {
+  username?: string;
+  total?: number;
+};
+
 function getRewardPool(totalWager: number) {
   for (const tier of rewardTiers) {
     if (totalWager >= tier.threshold) {
@@ -63,7 +68,7 @@ function useCountdownToEndOfMonthUTC() {
 }
 
 export default function Leaderboard() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   const { days, hours, minutes, seconds } = useCountdownToEndOfMonthUTC();
 
   useEffect(() => {
@@ -119,6 +124,14 @@ export default function Leaderboard() {
           })}
         </div>
 
+        <div className="info-box under-podium">
+          <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
+          <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
+          <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+          <p className="join-now">📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer">JOIN THE TEAM NOW</a></p>
+          <p className="refresh-note">⟳ Leaderboard refreshes every time you reload the page.</p>
+        </div>
+
         <div className="data-section">
           <div className="leaderboard-table">
             <table>
@@ -145,14 +158,6 @@ export default function Leaderboard() {
                 })}
               </tbody>
             </table>
-          </div>
-
-          <div className="info-box">
-            <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
-            <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
-            <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-            <p className="join-now">📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer">JOIN THE TEAM NOW</a></p>
-            <p className="refresh-note">⟳ Leaderboard refreshes every time you reload the page.</p>
           </div>
         </div>
 
