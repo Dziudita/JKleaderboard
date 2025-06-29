@@ -127,8 +127,8 @@ export default function Leaderboard() {
             </div>
 
             {/* Flex layout: table (left) + info box (right) */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', marginTop: '40px' }}>
-              <div style={{ flex: '1 1 500px', maxWidth: '500px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', flexWrap: 'wrap' }}>
+              <div style={{ width: '480px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
                   <thead>
                     <tr>
@@ -155,7 +155,7 @@ export default function Leaderboard() {
                 </table>
               </div>
 
-              <div style={{ flex: '1 1 300px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
+              <div style={{ width: '480px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
                 <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
                 <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
                 <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
