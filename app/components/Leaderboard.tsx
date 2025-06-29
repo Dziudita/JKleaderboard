@@ -173,6 +173,7 @@ export default function Leaderboard() {
                 padding: '20px',
                 color: '#f7c000',
                 boxShadow: '0 0 20px rgba(255,215,0,0.3)'
+       marginTop: '40px'
               }}>
                 <ul style={{ listStyle: 'disc', paddingLeft: '20px', fontSize: '1rem', lineHeight: '1.7' }}>
                   <li><strong>Minimum Wager Requirement:</strong> Players must wager at least $10,000</li>
