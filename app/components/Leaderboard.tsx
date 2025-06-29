@@ -128,7 +128,7 @@ export default function Leaderboard() {
 
             {/* Flex layout: table (left) + info box (right) */}
             <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px', marginTop: '40px' }}>
-              <div style={{ flex: '1 1 600px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
+              <div style={{ flex: '1 1 500px', maxWidth: '500px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
                   <thead>
                     <tr>
