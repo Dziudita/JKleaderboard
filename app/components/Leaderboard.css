@@ -251,6 +251,20 @@ html, body {
   to   { box-shadow: 0 0 25px 10px rgba(205, 133, 63, 0.7); }
 }
 
+/* NAUJA: LENTELĖ IR INFO BLOKŲ IŠDĖSTYMAS */
+.leaderboard-columns {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.leaderboard-table {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
   html, body {
     background-size: cover;
