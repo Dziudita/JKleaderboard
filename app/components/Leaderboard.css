@@ -146,7 +146,7 @@ html, body {
 /* AUKSINIS */
 .podium-card.gold {
   background-image: url('/gold-card.png');
-  transform: translateY(10px);
+  transform: translateY(20px);
   order: 2;
   box-shadow: 0 0 25px 10px rgba(255, 140, 0, 0.6);
   animation: glowGold 3s infinite alternate;
