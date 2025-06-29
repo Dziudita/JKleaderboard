@@ -193,18 +193,23 @@ export default function Leaderboard() {
                 </table>
               </div>
 
-              <div style={{ width: '480px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
-                <p>✅ <strong>Minimum Wager:</strong> $10,000</p>
-                <p>⏳ <strong>Ends in:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
-                <p>🔥 <strong>Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
-                <p style={{ marginTop: '10px' }}>📢 <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline', textTransform: 'uppercase' }}>JOIN THE TEAM NOW</a></p>
-                <p style={{ color: '#aaa', marginTop: '10px' }}>⟳ Leaderboard refreshes every 10–30 minutes</p>
-              </div>
-            </div>
-
-            <p style={{ color: '#f7c000', textAlign: 'center', marginTop: '30px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
-              Leaderboard will be paid out within 24 - 48 hours.
-            </p>
+            <div style={{ width: '480px', background: 'linear-gradient(to bottom, #222, #000)', border: '2px solid #f7c000', borderRadius: '12px', padding: '20px', color: '#f7c000', boxShadow: '0 0 20px rgba(255,215,0,0.3)' }}>
+  <p><strong>✅ Minimum Wager Requirement:</strong> Players must wager at least $10,000</p>
+  <p><strong>⏳ ENDS IN:</strong> {days}D {hours}H {minutes}M {seconds}S (UTC)</p>
+  <p><strong>🔥 Total Wagered:</strong> ${totalWager.toLocaleString(undefined, { minimumFractionDigits: 2 })}</p>
+  <p style={{ marginTop: '10px' }}>
+    <span>If you want to be a part of the action, </span>
+    <a href="https://www.goated.com/r/JOHNNYKNOX" target="_blank" rel="noopener noreferrer" style={{ color: '#ff2a2a', fontWeight: 'bold', textDecoration: 'underline' }}>
+      JOIN THE TEAM NOW!
+    </a>
+  </p>
+  <p style={{ color: '#aaa', marginTop: '10px' }}>
+    🕒 Leaderboard updates every time the page is refreshed, or at most every 10 minutes.
+  </p>
+  <p style={{ color: '#f7c000', marginTop: '20px', fontWeight: 'bold' }}>
+    Leaderboard will be paid out within 24 - 48 hours.
+  </p>
+</div>
             <p style={{ color: '#f7c000', fontSize: '0.9rem', textAlign: 'center', marginTop: '40px', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
               ⚠ Gamble Responsibly<br />
               <span style={{ color: '#f7c000', textShadow: '2px 2px 5px rgba(0,0,0,0.8)' }}>
