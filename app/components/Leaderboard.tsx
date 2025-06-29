@@ -174,7 +174,7 @@ export default function Leaderboard() {
   padding: '20px',
   color: '#f7c000',
   boxShadow: '0 0 20px rgba(255,215,0,0.3)',
-  marginTop: '100px'
+  marginTop: '100px',
       minHeight: '420px',
 
 }}>
