@@ -132,7 +132,7 @@ export default function Leaderboard() {
   </h2>
 </div>
 
-<style jsx>{
+<style jsx>{`
   @keyframes pulseGlow {
     0% {
       text-shadow: 0 0 8px #f7c000, 0 0 12px #ff9900;
@@ -145,6 +145,7 @@ export default function Leaderboard() {
     }
   }
 `}</style>
+
 
 
             <div className="podium">
