@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import './Leaderboard.css';
-import Podium from './Podium';
 
 
 const REFRESH_INTERVAL = 30 * 60 * 1000;
