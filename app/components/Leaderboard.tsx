@@ -136,8 +136,19 @@ export default function Leaderboard() {
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
-              <div style={{ width: '420px', marginTop: '100px', minHeight: '400px',
- marginBottom: '20px', background: 'rgba(0,0,0,0.5)', border: '2px solid gold', borderRadius: '12px', padding: '20px', boxShadow: '0 0 20px rgba(255,215,0,0.4)' }}>
+              <div style={{
+  width: '420px',
+  background: 'linear-gradient(to bottom, #222, #000)',
+  border: '2px solid #f7c000',
+  borderRadius: '12px',
+  padding: '20px',
+  color: '#f7c000',
+  boxShadow: '0 0 20px rgba(255,215,0,0.3)',
+  marginTop: '100px',
+  maxHeight: '460px',
+  overflow: 'auto'
+}}>
+
                 <table style={{ width: '100%', borderCollapse: 'collapse', color: '#fff' }}>
                   <thead>
                     <tr>
