@@ -118,7 +118,7 @@ export default function Leaderboard() {
               }
             `}</style>
 
-      <div className="podium">
+     <div className="podium">
   {[0, 1, 2].map((index) => {
     const user = users[index];
     if (!user) return null;
@@ -130,20 +130,38 @@ export default function Leaderboard() {
 
     const classes = ['gold', 'silver', 'bronze'];
     const titles = ['Champion', 'Runner-Up', 'Almost There'];
-    const displayName = index === 0 ? user.username : 'Secret';
+    const displayName = index === 0 ? user.username : 'SECRET';
 
     return (
-      <div key={index} className={`podium-card ${classes[index]}`}>
-        <div className="place-title" style={{ fontWeight: 'bold', marginBottom: '8px' }}>{titles[index]}</div>
-        <div className="username">{displayName}</div>
+      <div key={index} className={`podium-card ${classes[index]}`} style={{ position: 'relative', paddingTop: '20px' }}>
+        <div style={{
+          position: 'absolute',
+          top: '10px',
+          left: 0,
+          right: 0,
+          textAlign: 'center',
+          fontWeight: 'bold',
+          color: '#fff',
+          fontSize: '1.1rem'
+        }}>
+          {titles[index]}
+        </div>
+
+        <div className="username" style={{ marginTop: '40px' }}>{displayName}</div>
+
         <div className="info-section">
-          <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
-          <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+          <div className="wager">
+            Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
+          </div>
+          <div className="payout">
+            Payout: <strong>${payout.toFixed(2)}</strong>
+          </div>
         </div>
       </div>
     );
   })}
 </div>
+
 
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
