@@ -147,7 +147,7 @@ export default function Leaderboard() {
           {titles[index]}
         </div>
 
-        <div className="username" style={{ marginTop: '40px' }}>{displayName}</div>
+        <div className="username" style={{ marginTop: '40px', marginBottom: '6px' }}>{displayName}</div>
 
         <div className="info-section">
           <div className="wager">
