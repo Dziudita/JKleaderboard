@@ -118,7 +118,7 @@ export default function Leaderboard() {
               }
             `}</style>
 
-   <div className="podium">
+  <div className="podium">
   {[0, 1, 2].map((index) => {
     const user = users[index];
     if (!user) return null;
@@ -135,7 +135,13 @@ export default function Leaderboard() {
       <div
         key={index}
         className={`podium-card ${classes[index]}`}
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          paddingBottom: '25px',
+        }}
       >
         <div
           className="username"
@@ -143,15 +149,21 @@ export default function Leaderboard() {
             fontSize: '24px',
             fontWeight: 'bold',
             color: 'white',
-            marginTop: '-10px',
-            marginBottom: '5px',
+            marginTop: 'auto',
+            marginBottom: '18px', // nuleista šiek tiek žemiau
             textAlign: 'center',
           }}
         >
           {displayName}
         </div>
 
-        <div className="info-section" style={{ textAlign: 'center' }}>
+        <div
+          className="info-section"
+          style={{
+            textAlign: 'center',
+            marginTop: '-10px', // pakelta arčiau username
+          }}
+        >
           <div className="wager">
             Wager:{' '}
             <strong>
@@ -166,8 +178,6 @@ export default function Leaderboard() {
     );
   })}
 </div>
-
-
 
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
