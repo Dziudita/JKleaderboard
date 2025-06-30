@@ -120,7 +120,15 @@ export default function Leaderboard() {
               }
             `}</style>
 
-           <Podium topThree={users.slice(0, 3)} rewardPool={rewardPool} totalEligibleWager={totalEligibleWager} />
+         <Podium
+  topThree={users.slice(0, 3).map(user => ({
+    name: user.username ?? '',
+    wager: (user.total ?? 0).toLocaleString(undefined, { minimumFractionDigits: 2 }),
+    payout: (((user.total ?? 0) / totalEligibleWager) * rewardPool * 0.6).toFixed(2)
+  }))}
+  rewardPool={rewardPool}
+  totalEligibleWager={totalEligibleWager}
+/>
 
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
