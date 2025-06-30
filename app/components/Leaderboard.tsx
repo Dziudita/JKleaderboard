@@ -138,7 +138,7 @@ export default function Leaderboard() {
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
               <div style={{
   width: '420px',
-  background: 'linear-gradient(to bottom, #222, #000)',
+ background: 'linear-gradient(to bottom, rgba(34,34,34,0.3), rgba(0,0,0,0.3))',
   border: '2px solid #f7c000',
   borderRadius: '12px',
   padding: '20px',
