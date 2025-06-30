@@ -130,11 +130,22 @@ export default function Leaderboard() {
 
     return (
       <div key={index} className={`podium-card ${classes[index]}`}>
+        <div className="info-section" style={{ marginBottom: '10px' }}>
+          <div className="wager" style={{ fontSize: '16px', textAlign: 'center', color: 'white' }}>
+            Wager:{' '}
+            <strong>
+              ${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+            </strong>
+          </div>
+          <div className="payout" style={{ fontSize: '16px', textAlign: 'center', color: 'white' }}>
+            Payout: <strong>${payout.toFixed(2)}</strong>
+          </div>
+        </div>
+
         <div
           className="username"
           style={{
-            marginTop: '80px', // nuleidžiamas šiek tiek daugiau
-            marginBottom: '8px',
+            marginTop: '10px', // pakeltas viršun
             fontSize: '22px',
             fontWeight: 'bold',
             color: 'white',
@@ -143,32 +154,10 @@ export default function Leaderboard() {
         >
           {displayName}
         </div>
-
-        <div
-          className="info-section"
-          style={{
-            marginTop: '-8px', // šiek tiek pakeltas arčiau vardo
-            textAlign: 'center',
-            fontSize: '16px',
-            color: '#fff',
-          }}
-        >
-          <div className="wager">
-            Wager:{' '}
-            <strong>
-              ${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-            </strong>
-          </div>
-          <div className="payout">
-            Payout: <strong>${payout.toFixed(2)}</strong>
-          </div>
-        </div>
       </div>
     );
   })}
 </div>
-
-
 
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
