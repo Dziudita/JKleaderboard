@@ -118,7 +118,7 @@ export default function Leaderboard() {
               }
             `}</style>
 
-  <div className="podium">
+<div className="podium">
   {[0, 1, 2].map((index) => {
     const user = users[index];
     if (!user) return null;
@@ -150,7 +150,7 @@ export default function Leaderboard() {
             fontWeight: 'bold',
             color: 'white',
             marginTop: 'auto',
-            marginBottom: '18px', // nuleista šiek tiek žemiau
+            marginBottom: '12px', // šiek tiek nuleista daugiau nei prieš tai
             textAlign: 'center',
           }}
         >
@@ -161,7 +161,7 @@ export default function Leaderboard() {
           className="info-section"
           style={{
             textAlign: 'center',
-            marginTop: '-10px', // pakelta arčiau username
+            marginTop: '-18px', // dar truputį pakelta arčiau vardo
           }}
         >
           <div className="wager">
@@ -178,6 +178,7 @@ export default function Leaderboard() {
     );
   })}
 </div>
+
 
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
