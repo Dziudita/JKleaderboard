@@ -118,7 +118,7 @@ export default function Leaderboard() {
               }
             `}</style>
 
-     <div className="podium">
+   <div className="podium">
   {[0, 1, 2].map((index) => {
     const user = users[index];
     if (!user) return null;
@@ -129,29 +129,34 @@ export default function Leaderboard() {
         : 0;
 
     const classes = ['gold', 'silver', 'bronze'];
-    const titles = ['Champion', 'Runner-Up', 'Almost There'];
     const displayName = index === 0 ? user.username : 'SECRET';
 
     return (
-      <div key={index} className={`podium-card ${classes[index]}`} style={{ position: 'relative', paddingTop: '20px' }}>
-        <div style={{
-          position: 'absolute',
-          top: '10px',
-          left: 0,
-          right: 0,
-          textAlign: 'center',
-          fontWeight: 'bold',
-          color: '#fff',
-          fontSize: '1.1rem'
-        }}>
-          {titles[index]}
+      <div
+        key={index}
+        className={`podium-card ${classes[index]}`}
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <div
+          className="username"
+          style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            color: 'white',
+            marginTop: '-10px',
+            marginBottom: '5px',
+            textAlign: 'center',
+          }}
+        >
+          {displayName}
         </div>
 
-        <div className="username" style={{ marginTop: '40px', marginBottom: '6px' }}>{displayName}</div>
-
-        <div className="info-section">
+        <div className="info-section" style={{ textAlign: 'center' }}>
           <div className="wager">
-            Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong>
+            Wager:{' '}
+            <strong>
+              ${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+            </strong>
           </div>
           <div className="payout">
             Payout: <strong>${payout.toFixed(2)}</strong>
@@ -161,6 +166,7 @@ export default function Leaderboard() {
     );
   })}
 </div>
+
 
 
 
