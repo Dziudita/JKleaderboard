@@ -3,6 +3,8 @@
 
 import { useEffect, useState } from 'react';
 import './Leaderboard.css';
+import Podium from './Podium';
+
 
 const REFRESH_INTERVAL = 30 * 60 * 1000;
 
@@ -118,23 +120,8 @@ export default function Leaderboard() {
               }
             `}</style>
 
-            <div className="podium">
-              {users.slice(0, 3).map((user, index) => {
-                const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-                  ? (user.total / totalEligibleWager) * rewardPool * 0.6
-                  : 0;
-                const classes = ['gold', 'silver', 'bronze'];
-                return (
-                  <div key={index} className={`podium-card ${classes[index]}`}>
-                    <div className="username">{maskName(user.username)}</div>
-                    <div className="info-section">
-                      <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
-                      <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+           <Podium topThree={users.slice(0, 3)} rewardPool={rewardPool} totalEligibleWager={totalEligibleWager} />
+
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
               <div style={{
