@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -119,23 +118,33 @@ export default function Leaderboard() {
               }
             `}</style>
 
-            <div className="podium">
-              {users.slice(0, 3).map((user, index) => {
-                const payout = user.total && rewardPool > 0 && totalEligibleWager > 0
-                  ? (user.total / totalEligibleWager) * rewardPool * 0.6
-                  : 0;
-                const classes = ['gold', 'silver', 'bronze'];
-                return (
-                  <div key={index} className={`podium-card ${classes[index]}`}>
-                    <div className="username">{maskName(user.username)}</div>
-                    <div className="info-section">
-                      <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
-                      <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+      <div className="podium">
+  {[0, 1, 2].map((index) => {
+    const user = users[index];
+    if (!user) return null;
+
+    const payout =
+      user.total && rewardPool > 0 && totalEligibleWager > 0
+        ? (user.total / totalEligibleWager) * rewardPool * 0.6
+        : 0;
+
+    const classes = ['gold', 'silver', 'bronze'];
+    const titles = ['Champion', 'Runner-Up', 'Almost There'];
+    const displayName = index === 0 ? user.username : 'Secret';
+
+    return (
+      <div key={index} className={`podium-card ${classes[index]}`}>
+        <div className="place-title" style={{ fontWeight: 'bold', marginBottom: '8px' }}>{titles[index]}</div>
+        <div className="username">{displayName}</div>
+        <div className="info-section">
+          <div className="wager">Wager: <strong>${user.total?.toLocaleString(undefined, { minimumFractionDigits: 2 })}</strong></div>
+          <div className="payout">Payout: <strong>${payout.toFixed(2)}</strong></div>
+        </div>
+      </div>
+    );
+  })}
+</div>
+
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '60px', marginTop: '40px', flexWrap: 'wrap' }}>
               <div style={{
