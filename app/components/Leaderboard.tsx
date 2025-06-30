@@ -119,10 +119,7 @@ export default function Leaderboard() {
             `}</style>
 
 <div className="podium">
-  {[0, 1, 2].map((index) => {
-    const user = users[index];
-    if (!user) return null;
-
+  {users.slice(0, 3).map((user, index) => {
     const payout =
       user.total && rewardPool > 0 && totalEligibleWager > 0
         ? (user.total / totalEligibleWager) * rewardPool * 0.6
@@ -132,25 +129,15 @@ export default function Leaderboard() {
     const displayName = index === 0 ? user.username : 'SECRET';
 
     return (
-      <div
-        key={index}
-        className={`podium-card ${classes[index]}`}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          paddingBottom: '25px',
-        }}
-      >
+      <div key={index} className={`podium-card ${classes[index]}`}>
         <div
           className="username"
           style={{
-            fontSize: '24px',
+            marginTop: '80px', // nuleidžiamas šiek tiek daugiau
+            marginBottom: '8px',
+            fontSize: '22px',
             fontWeight: 'bold',
             color: 'white',
-            marginTop: 'auto',
-            marginBottom: '12px', // šiek tiek nuleista daugiau nei prieš tai
             textAlign: 'center',
           }}
         >
@@ -160,8 +147,10 @@ export default function Leaderboard() {
         <div
           className="info-section"
           style={{
+            marginTop: '-8px', // šiek tiek pakeltas arčiau vardo
             textAlign: 'center',
-            marginTop: '-18px', // dar truputį pakelta arčiau vardo
+            fontSize: '16px',
+            color: '#fff',
           }}
         >
           <div className="wager">
@@ -178,6 +167,7 @@ export default function Leaderboard() {
     );
   })}
 </div>
+
 
 
 
