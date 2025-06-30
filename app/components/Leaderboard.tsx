@@ -126,7 +126,7 @@ export default function Leaderboard() {
         : 0;
 
     const classes = ['gold', 'silver', 'bronze'];
-    const displayName = index === 2 ? '🐴' : user.username;
+  const displayName = maskName(user.username);
 
 
     return (
