@@ -126,7 +126,7 @@ export default function Leaderboard() {
         : 0;
 
     const classes = ['gold', 'silver', 'bronze'];
-    const displayName = index === 0 ? user.username : 'SECRET';
+    const displayName = index < 2 ? user.username : 'SECRET';
 
     return (
       <div key={index} className={`podium-card ${classes[index]}`}>
