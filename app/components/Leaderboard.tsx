@@ -130,7 +130,7 @@ export default function Leaderboard() {
 
 
     return (
-      <div key={index} className={podium-card ${classes[index]}}>
+      <div key={index} className={`podium-card ${classes[index]}`}>
         <div className="info-section" style={{ marginBottom: '10px' }}>
           <div className="wager" style={{ fontSize: '16px', textAlign: 'center', color: 'white' }}>
             Wager:{' '}
